@@ -109,6 +109,28 @@ Do a dry run (generate SQL queries) for both vacuum and analyze for the table tb
 ./vacuum-analyze-utility.sh -h endpoint -u bhuvi -d dev -t tbl3 -z 1
 {% endhighlight %}
 
+## Schedule different vacuum options based on the day
+
+We'll not full the Vacuum full on daily basis, so If you want to run vacumm only on Sunday and do vacuum `SORT ONLY` on the other day's without creating a new cron job you can handle this from the script. 
+
+Just remove this piece of the code.
+{% highlight sh%}
+if [[ $vacuumoption == 'unset' ]]
+	then vacuumoption='SORT ONLY'
+else
+	vacuumoption=$vacuumoption
+fi
+{% endhighlight %}
+And add this lines.
+{% highlight sh%}
+## Eg: run vacuum FULL on Sunday and SORT ONLY on other days
+if [[ `date '+%a'` == 'Sun' ]]
+	then  vacuumoption='FULL'
+else 
+	vacuumoption="SORT ONLY"
+fi
+{% endhighlight %}
+
 ## Sample output:
 
 **For vacumm and Analyze:**
