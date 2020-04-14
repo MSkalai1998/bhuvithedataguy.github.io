@@ -180,3 +180,5 @@ analyze sc3.tbl3;
 ## Conclusion:
 
 If you found any issues or looking for a feature please feel free to open an issue on the github page, also if you want to contribute for this utility please comment below. 
+
+## [Click here to get the Code ](https://github.com/BhuviTheDataGuy/RedShift-ToolKit/tree/master/VacuumAnalyzeUtility)
