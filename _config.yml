@@ -1,5 +1,6 @@
 # Config file:
-remote_theme: "mmistakes/so-simple-theme@3.2.0"
+theme: jekyll-theme-so-simple
+skin: "/assets/css/skins/default.css"
 locale: en-US
 title: "The Data Guy"
 description: "Adventures of a DBA in Cloud, Data and DevOps"
