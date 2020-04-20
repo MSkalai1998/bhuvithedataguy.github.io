@@ -1,10 +1,4 @@
 User-agent: *
 Disallow:
-Disallow: /assets/
-Disallow: /_data/
-Disallow: /_includes/
-Disallow: /_layouts/
-Disallow: /_sass/
-Disallow: /uploads/
 Sitemap: https://thedataguy.in/sitemap.xml
 Allow: /
