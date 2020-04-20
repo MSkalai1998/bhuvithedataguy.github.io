@@ -1,4 +1,17 @@
+User-agent: Googlebot
+User-agent: googlebot-image
+User-agent: googlebot-mobile
+User-agent: MSNBot
+User-agent: Slurp
+User-agent: Gigabot
+User-agent: yahoo-mmcrawler
+User-agent: yahoo-blogs/v3.9
 User-agent: *
-Disallow:
+Disallow: /assets/
+Disallow: /_data/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_sass/
+Disallow: /uploads/
 Sitemap: https://thedataguy.in/sitemap.xml
 Allow: /
