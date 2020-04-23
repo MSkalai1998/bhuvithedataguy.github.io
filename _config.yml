@@ -3,7 +3,6 @@ theme: jekyll-theme-so-simple
 skin: "/assets/css/skins/default.css"
 locale: en-US
 title: "The Data Guy"
-description: "Adventures of a DBA in Cloud, Data and DevOps"
 baseurl: 
 url: "https://thedataguy.in"
 logo: # path of site logo, e.g. "/images/logo.png"
