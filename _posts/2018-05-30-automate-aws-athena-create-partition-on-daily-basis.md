@@ -203,3 +203,7 @@ def lambda_handler(event, context):
 run_query(query, database, s3_ouput)
 {% endhighlight %}
 
+## Some interesting blogs for you:
+
+1. [Automate your AWS Redshift Vacuum and Analyze with Scripts](https://thedataguy.in/automate-redshift-vacuum-analyze-using-shell-script-utility/)
+2. [Export RedShift system tables to S3](https://thedataguy.in/export-redshift-system-tables-views-to-s3/)
