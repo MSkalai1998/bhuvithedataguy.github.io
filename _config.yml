@@ -1,34 +1,15 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-theme: jekyll-theme-so-simple
-# remote_theme: mmistakes/so-simple-theme
-skin: "/assets/css/skins/default.css"
+# Config file:
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
 locale: en-US
 title: "The Data Guy"
 description: "Adventures of a DBA in Cloud, Data and DevOps"
-baseurl: # the subpath of your site, e.g. "/blog"
+baseurl: 
 url: "https://thedataguy.in"
 logo: # path of site logo, e.g. "/images/logo.png"
-date_format: "%B %-d, %Y"
+date_format: "%Y-%m-%d"
 read_time: true
 words_per_minute: 200
-mathjax:
-  enable: true
-  combo:  "tex-svg"
-  tags:  "none"
+mathjax: true
 google_fonts:
   - name: "Source Sans Pro"
     weights: "400,400i,700,700i"
@@ -39,7 +20,10 @@ disqus:
   shortname: "bhuvithedataguy"
 twitter:
   username: "BhuviTheDataGuy"
-
+gems:
+    - jekyll-seo-tag
+    - jekyll-lunr-js-search
+    - jekyll-feed
 # Liquid
 liquid:
   error_mode: strict
@@ -50,28 +34,19 @@ markdown: kramdown
 feed:
   path: atom.xml
 
-# Pagination - https://jekyllrb.com/docs/pagination/
+# Pagination 
 paginate: 10
 paginate_path: /page:num/
 
 # Search
-search_full_content: true # can have performance implications for large sites
+search_full_content: true
 
 # Taxonomy pages
 category_archive_path: "/categories/#"
 tag_archive_path: "/tags/#"
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# SiteMap
+url: "https://thedataguy.in" # the base hostname & protocol for your site
 
 plugins:
   - jekyll-seo-tag
@@ -90,6 +65,7 @@ defaults:
       layout: post
       share: true
 
+# Site Author
 author: 
   name: Bhuvanesh
   picture: /assets/bhuvi-photo-dp.jpg
