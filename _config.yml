@@ -1,12 +1,10 @@
 # Config file:
-theme: jekyll-theme-so-simple
-skin: "/assets/css/skins/default.css"
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
 locale: en-US
 title: "The Data Guy"
 description: "Adventures of a DBA in Cloud, Data and DevOps"
 baseurl: 
 url: "https://thedataguy.in"
-description: ""
 logo: # path of site logo, e.g. "/images/logo.png"
 date_format: "%Y-%m-%d"
 read_time: true
