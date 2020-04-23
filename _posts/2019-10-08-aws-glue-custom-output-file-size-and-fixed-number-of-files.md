@@ -128,3 +128,8 @@ I have found some useful information while doing this experiment. Im giving thos
 5. [AWS Glue FAQ, or How to Get Things Done](https://github.com/aws-samples/aws-glue-samples/blob/master/FAQ_and_How_to.md#aws-glue-faq-or-how-to-get-things-done)
 6. [DynamicFrame vs DataFrame](https://stackoverflow.com/questions/52822526/dynamicframe-vs-dataframe)
 7. [DynamicFrame Class](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame.html)
+
+## Some interesting blogs for you:
+
+1. [Automate your AWS Redshift Vacuum and Analyze with Scripts](https://thedataguy.in/automate-redshift-vacuum-analyze-using-shell-script-utility/)
+2. [Export RedShift system tables to S3](https://thedataguy.in/export-redshift-system-tables-views-to-s3/)
