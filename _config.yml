@@ -24,6 +24,7 @@ gems:
     - jekyll-seo-tag
     - jekyll-lunr-js-search
     - jekyll-feed
+    - jekyll-sitemap
 # Liquid
 liquid:
   error_mode: strict
