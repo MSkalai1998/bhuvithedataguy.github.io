@@ -1,4 +1,4 @@
-# Sample site navigation bar links
+# navigation bar links
 
 - title: Home
   url: /
@@ -12,3 +12,4 @@
   url: https://medium.com/@bhuvithedataguy
 - title: Search
   url: /search/
+

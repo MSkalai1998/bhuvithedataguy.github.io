@@ -19,7 +19,7 @@ exclude: 'yes'
       {% if post.sitemap.changefreq %}
         <changefreq>{{ post.sitemap.changefreq }}</changefreq>
       {% else %}
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
       {% endif %}
       {% if post.sitemap.priority %}
         <priority>{{ post.sitemap.priority }}</priority>
@@ -44,7 +44,7 @@ exclude: 'yes'
         {% if page.sitemap.changefreq %}
           <changefreq>{{ page.sitemap.changefreq }}</changefreq>
         {% else %}
-          <changefreq>weekly</changefreq>
+          <changefreq>monthly</changefreq>
         {% endif %}
         {% if page.sitemap.priority %}
           <priority>{{ page.sitemap.priority }}</priority>

@@ -14,6 +14,8 @@
   display: block;
   margin: 0;
   padding: 0.25em 0.75em 0.5em;
+  color: $nav-color;
+  background-color: $nav-background-color;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -33,6 +35,8 @@
     margin: 0;
     padding: 0.25em 0.75em;
     list-style: none;
+    color: $nav-color;
+    background-color: $nav-background-color;
     border-radius: 0 0 (2 * $border-radius) (2 * $border-radius);
 
     @include breakpoint($medium) {
@@ -42,16 +46,21 @@
 
   li {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.75em;
   }
 
   a {
     display: block;
     padding: 0.5em 0.75em;
+    color: $nav-color;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid;
+    border: 1px solid $nav-background-color;
     border-radius: $border-radius;
+
+    &:hover {
+      border-color: $nav-color;
+    }
   }
 
   @include breakpoint($medium) {
@@ -78,6 +87,7 @@
   font-weight: 700;
 
   a {
+    color: $text-color;
     text-decoration: none;
   }
 }
@@ -99,7 +109,7 @@
 .site-logo-img {
   width: $site-logo-width;
   height: $site-logo-height;
-  border: 5px solid;
+  border: 5px solid $background-color;
   border-radius: $site-logo-width;
 
   @include breakpoint($medium) {
@@ -120,7 +130,7 @@
   margin: 2em 0;
   padding: 2em 0;
   text-align: center;
-  border-top: 1px solid;
+  border-top: 1px solid $border-color;
 
   .social-icons {
     margin-bottom: 0.5em;
@@ -133,19 +143,24 @@
 }
 
 .copyright {
-  font-size: 0.75rem;
+  color: lighten($text-color, 35%);
+  font-size: 0.75em;
 
   p {
     margin: 0;
     padding: 0;
+  }
+
+  a {
+    color: lighten($text-color, 35%);
   }
 }
 
 .footnotes {
   margin: 2rem 0;
   padding-top: 1rem;
-  border-top: 1px solid;
-  font-size: 0.75rem;
+  border-top: 1px solid $border-color;
+  font-size: 80%;
 }
 
 .more-link {
@@ -155,7 +170,8 @@
 
 .back-to-top {
   display: block;
-  font-size: 0.75rem;
+  color: lighten($text-color, 50%);
+  font-size: 0.75em;
   text-transform: uppercase;
   text-align: right;
   text-decoration: none;
@@ -166,7 +182,7 @@
   padding-bottom: 1em;
 
   &:not(:last-child) {
-    border-bottom: solid 1px;
+    border-bottom: solid 1px $border-color;
   }
 
   + .taxonomy-section {
@@ -177,7 +193,12 @@
 .taxonomy-title {
   @include fluid-type($min-vw, $max-vw, 28px, 32px);
   margin-bottom: 0.5em;
+  color: lighten($text-color, 60%);
   font-family: $base-font-family;
+}
+
+.taxonomy-count {
+  color: lighten($text-color, 50%);
 }
 
 .taxonomy-index {
@@ -187,7 +208,7 @@
   margin: 0;
   padding: 0;
   font-family: $base-font-family;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   list-style: none;
 
   @include breakpoint($large) {
@@ -204,7 +225,11 @@
     justify-content: space-between;
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid $border-color;
+
+    &:hover {
+      color: $accent-color;
+    }
   }
 
   + .taxonomy-section {
@@ -235,15 +260,22 @@
       display: block;
       margin-bottom: 0.25em;
       padding: 0.5em 1em;
-      font-size: 0.75rem;
+      color: mix(#000, $border-color, 25%);
+      font-size: 14px;
       font-weight: bold;
       line-height: 1.5;
       text-align: center;
       text-decoration: none;
-      border: 1px solid;
+      border: 1px solid $border-color;
       border-radius: 0;
 
+      &.current,
+      &.current.disabled {
+        @include yiq-contrasted(mix(#000, $border-color, 25%));
+      }
+
       &.disabled {
+        color: $border-color;
         pointer-events: none;
         cursor: not-allowed;
       }
@@ -271,15 +303,15 @@
   margin-bottom: 2em;
   padding: 0.5em;
   width: 100%;
-  font-size: 0.9rem;
-  border: 2px solid;
+  font-size: 0.9em;
+  border: 2px solid $border-color;
   border-radius: $border-radius;
 }
 
 .toc-wrapper {
   display: inline-block;
   margin-bottom: 1.5em;
-  border: 1px solid;
+  border: 1px solid (mix(#fff, $border-color, 25%));
   border-radius: $border-radius;
 
   h2 {
@@ -294,6 +326,8 @@
     align-items: center;
     margin: 0;
     padding: 0.75rem 1rem;
+    color: $base05;
+    background-color: $base00;
     font-family: $base-font-family;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -322,6 +356,7 @@
     margin-bottom: 0;
     padding-left: 2rem;
     overflow: hidden;
+    color: $base05;
     font-size: 0.9rem;
     -webkit-transition: height 350ms ease;
     transition: height 350ms ease;
@@ -343,11 +378,17 @@
       font-weight: 600;
       text-decoration: none;
       border-bottom: 1px dotted transparent;
+
+      &:hover,
+      &:focus {
+        border-bottom: 1px dotted $border-color;
+      }
     }
 
     ol {
       padding-left: 0.5rem;
       list-style-type: lower-roman;
+      background-color: $background-color;
     }
   }
 }
