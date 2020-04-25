@@ -155,7 +155,7 @@ fi
 
 **For Dry Run:**
 {% highlight sh%}
-./vacuum-analyze-utility.sh -h endpoint -u bhuvi -d dev -s sc3 -a 1  -v 1 -x 80 -f 0 
+./vacuum-analyze-utility.sh -h endpoint -u bhuvi -d dev -s sc3 -a 1  -v 1 -x 80 -f 0 -z 1
 2020-04-13 18:33:53 Starting the process.....
 2020-04-13 18:33:53 Validating the Host,User,Database arguments
 2020-04-13 18:33:53 Perfect all the mandatory arguments are set
