@@ -2,7 +2,8 @@
 layout: post
 title: Automate RedShift Vacuum And Analyze with Script
 date: 2020-04-14 06:45:00 +0530
-description: 'Automate the RedShift vacuum and analyze using the shell script utility'
+tagline: Automate the RedShift vacuum and analyze using the shell script utility
+description: Automate the RedShift vacuum and analyze using the shell script utility
 categories:
 - RedShift
 tags:
@@ -11,6 +12,12 @@ tags:
 - shellscript
 - automation
 image: "/assets/Automate RedShift Vacuum And Analyze Like a Boss.jpg"
+social:
+  name: Bhuvanesh
+  links:
+    - https://twitter.com/BhuviTheDataGuy
+    - https://www.linkedin.com/in/rbhuvanesh
+    - https://github.com/BhuviTheDataGuy
 ---
 Vacuum and Analyze process in AWS Redshift is a pain point to everyone, most of us trying to automate with their favorite scripting languge. AWS RedShift is an enterprise data warehouse solution to handle petabyte-scale data for you. AWS also improving its quality by adding a lot more features like Concurrency scaling, Spectrum, Auto WLM, etc. But for a DBA or a RedShift admin its always a headache to vacuum the cluster and do analyze to update the statistics. Since its build on top of the PostgreSQL database. But RedShift will do the Full vacuum without locking the tables. And they can trigger the auto vacuum at any time whenever the cluster load is less. But for a busy Cluster where everyday 200GB+ data will be added and modified some decent amount of data will not get benefit from the native auto vacuum feature. You know your workload, so you have to set a scheduled vacuum for your cluster and even we had such a situation where we need to build some more handy utility for my workload. 
 
