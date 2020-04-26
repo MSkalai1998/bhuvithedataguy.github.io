@@ -1,7 +1,7 @@
 ---
 title: Export RedShift System Tables And Views To S3
 date: 2020-04-06 06:45:00 +0530
-description: 'Export the ResShift system tables and views to S3 for persistent storage with incremental backup'
+description: Export the ResShift system tables and views (STL tables) to S3 for persistent storage with incremental backup
 categories:
 - RedShift
 tags:
@@ -11,7 +11,7 @@ tags:
 - s3
 image: "/assets/Export RedShift System Tables And Views To S3.jpg"
 ---
-RedShift's system tables and views are haveing more depth information about the queries. Information like query history, plan, query summary, etc. But these informations only available for very shot period of time. RedShift documentation says that from 2 days to 5 days we can retrive the data. It'll automatically flush the older data to keep the disk space utilization under the control. This is fine for ad-hoc performance tuning but if you want to keep the complete history of the data from these system tables and views then we have to export/Unload them to S3. I did google for implementing this on my infra, I found 2 awesome links from official AWS blog and github repo. But I wanted to try something easy with cost benifical. So I have written a stored procedure to do this.
+RedShift's system tables and views are haveing more depth information about the queries, Its highly important to export the RedShift system tables and views (STL tables) to S3 for persistent. These tables contains the information like query history, plan, query summary, etc. But these informations only available for very shot period of time. RedShift documentation says that from 2 days to 5 days we can retrive the data. It'll automatically flush the older data to keep the disk space utilization under the control. This is fine for ad-hoc performance tuning but if you want to keep the complete history of the data from these system tables and views then we have to export/Unload them to S3. I did google for implementing this on my infra, I found 2 awesome links from official AWS blog and github repo. But I wanted to try something easy with cost benifical. So I have written a stored procedure to do this.
 
 ## Exsiting Options:
 
