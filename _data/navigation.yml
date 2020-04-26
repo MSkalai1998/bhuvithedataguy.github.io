@@ -8,8 +8,9 @@
   url: /categories/
 - title: Tags
   url: /tags/
-- title: BigData Articles
+- title: Medium Blog
   url: https://medium.com/@bhuvithedataguy
+- title: Talks
+  url: /talks/
 - title: Search
   url: /search/
-
