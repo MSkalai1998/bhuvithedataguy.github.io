@@ -1,6 +1,5 @@
 ---
 title: My Talks on various communities
-layout: page
 ---
 
 * 2020
