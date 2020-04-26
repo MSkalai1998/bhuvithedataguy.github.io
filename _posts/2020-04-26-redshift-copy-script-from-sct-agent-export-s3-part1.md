@@ -181,5 +181,5 @@ done < source_generate_copy
 
 All tables COPY command will be generated and located on `/root/copy-sql/` location.
 
-I have written about how to generate the SQL command for bulk exported tables in **[Part 2]**(). 
+I have written about how to generate the SQL command for bulk exported tables in **[Part 2](https://thedataguy.in/redshift-copy-script-from-sct-agent-export-s3-part1/)**. 
 
