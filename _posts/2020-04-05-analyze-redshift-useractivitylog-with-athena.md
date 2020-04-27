@@ -1,7 +1,7 @@
 ---
 title: Analyze RedShift user activity logs With Athena
 date: 2020-04-05 06:45:00 +0530
-description: 'Analuze the RedShift useractivitylog files with Athena, You can remove the newline charactors with Lambda'
+description: 'Analuze the RedShift User activity log(useractivitylog) files with Athena, You can remove the newline charactors with Lambda'
 categories:
 - RedShift
 tags:
@@ -13,7 +13,7 @@ tags:
 image: "/assets/Analyze RedShift user activity logs With Athena.jpg"
 
 ---
-A few of my recent blogs are concentrating on Analyzing RedShift queries. It seems its not a production critical issue or business challenge, but keeping your historical queries are very important for auditing. RedShift providing us 3 ways to see the query logging. But all are having some restrictions, so its very difficult to manage the right framework for analyzing the RedShift queries. We can keep the historical queries in S3, its a default feature. We can get all of our queries in a file named as `useractivitylogs`. But its a plain text file, in other words, it's an unstructured data. Now you understand where the problem is. Lets see the challenges with all these 3 ways.
+A few of my recent blogs are concentrating on Analyzing RedShift queries. It seems its not a production critical issue or business challenge, but keeping your historical queries are very important for auditing. RedShift providing us 3 ways to see the query logging. But all are having some restrictions, so its very difficult to manage the right framework for analyzing the RedShift queries. We can keep the historical queries in S3, its a default feature. We can get all of our queries in a file named as User activity log(`useractivitylogs`). But its a plain text file, in other words, it's an unstructured data. Now you understand where the problem is. Lets see the challenges with all these 3 ways.
 
 1. **useractivitylog in s3** - Completly unstructured, we can't directly use this. 
 2. **STL_QUERY** - Great table, but if your query is huge in size, then it'll truncate your query, so you'll not get the complete query.
