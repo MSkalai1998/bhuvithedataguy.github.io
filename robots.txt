@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-Sitemap: https://thedataguy.in/sitemap.xml
+Sitemap: https://thedataguy.in/smap.xml
 Allow: /
