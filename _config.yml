@@ -90,7 +90,7 @@ defaults:
 # Site Author
 author:
   name: Bhuvanesh
-  picture: //assets/bhuvi-photo-dp.jpg
+  picture: /assets/bhuvi-photo-dp.jpg
   twitter: https://twitter.com/BhuviTheDataGuy 
   links:
     - title: LinkedIn
