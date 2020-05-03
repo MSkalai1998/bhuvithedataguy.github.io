@@ -70,7 +70,7 @@ Add SMTP Details to RunDeck:
 Add the below lines to **rundeck-config.properties** file.
 
 
-{% highlight html linenos %} {% raw %}vi /etc/rundeck/rundeck-config.properties
+{% highlight shell%}vi /etc/rundeck/rundeck-config.properties
 #SMTP Details
 grails.mail.host=email-smtp.us-east-1.amazonaws.com 
 grails.mail.port=587 
@@ -78,4 +78,4 @@ grails.mail.username=XXXXXXXXXXXXXXX #your access key
 grails.mail.password=XXXXXXXXXXXXXXX #your secret key 
 grails.mail.default.from=bhuvi@thedataguy.in #your ses verified sender email
 
-service rundeckd restart{% endraw %} {% endhighlight %}
+service rundeckd restart {% endhighlight %}
