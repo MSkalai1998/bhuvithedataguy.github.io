@@ -28,7 +28,8 @@ Configure ProxyPass:
 Create a new config file on *`/etc/nginx/conf.d/`*
 
 # Replace rundeck.sqlgossip.com to your domain name or IP address
-{% highlight html linenos %} {% raw %}vi /etc/nginx/conf.d/rundeck.conf
+```sh
+vi /etc/nginx/conf.d/rundeck.conf
 
 server {
     listen 80;
@@ -41,7 +42,8 @@ server {
     proxy_set_header X-Forwarded-Server $host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
-}{% endraw %} {% endhighlight %}
+}
+```
 
 Change the Server URL in runeck config file:
 --------------------------------------------
