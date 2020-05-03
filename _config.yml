@@ -1,0 +1,81 @@
+site: "The Data Guy"
+url: "https://thedataguy.in"
+title: "The Data Guy"
+description: "Adventures of a DBA in Cloud, Data and DevOps"
+date_format: "%Y-%m-%d"
+liquid:
+  error_mode: strict
+
+permalink: pretty
+
+category_archive_path: "/categories/#"
+tag_archive_path: "/tags/#"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: html
+    css_class   : 'syntax'
+
+exclude:
+  - .jekyll-cache
+  
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap 
+
+collections:
+  pages:
+    output: true
+    permalink: /:name
+  posts:
+    output: true
+    permalink: /:title/
+  
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+disqus:
+  shortname: bhuvithedataguy
+google_analytics: "UA-134677199-1"        
+  
+author:
+  name: Bhuvanesh
+  url: https://linkedin.com/in/rbhuvanesh
+  avatar: /assets/circle-cropped.png
+  picture: /assets/circle-cropped.png
+  twitter: https://twitter.com/BhuviTheDataGuy 
+  links:
+    - title: LinkedIn
+      url: https://linkedin.com/in/rbhuvanesh 
+twitter:
+  username: bhuvithedataguy
+  card: summary
+  creator: bhuvithedataguy      
