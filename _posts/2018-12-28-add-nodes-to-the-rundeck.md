@@ -31,7 +31,7 @@ resources.source.1.type=file
 
 
 ### Create the resources.xml file
-{% highlight html linenos %} {% raw %}cd /var/rundeck/projects/Test-Job/etc/
+{% highlight shell%}cd /var/rundeck/projects/Test-Job/etc/
     touch resouces.xml
     vi resources.xml
 
@@ -42,7 +42,7 @@ resources.source.1.type=file
     <node name="replica-01"  tags="mysql" hostname="10.0.0.2" osArch="amd64" osFamily="unix" osName="Linux" osVersion="4.9.0-2-amd64" username="rundeck"/>
 
     </project>
-{% endraw %} {% endhighlight %}
+ {% endhighlight %}
 
 Save this file and restart Rundeck service.
 
