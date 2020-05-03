@@ -68,23 +68,23 @@ Now in my scripting, based on the above scenario, I have added a condition for w
 
 1\. If hour !=00(not equal to 12AM),  then check if minutes >15. Now I can use FULL backup + last Incremental backups.
 
-{% highlight html linenos %} {% raw %}  ex: 2019-03-04 02:20:30  
+{% highlight shell %}  ex: 2019-03-04 02:20:30  
 hour =02 (!=00)  
 minutes =20 (>15)  
-Restore: FULL Backup + 01 Inc + 02 Inc  {% endraw %} {% endhighlight %}
+Restore: FULL Backup + 01 Inc + 02 Inc   {% endhighlight %}
 
 2\. If hour !=00(not equal to 12AM),  then check if minutes <15. Then the incremental backup is going on this time. So we should avoid this current Inc backup and use FULL Backup alone + Current Hour -1 Inc backup
 
-{% highlight html linenos %} {% raw %}  ex: 2019-03-04 05:10:30  
+{% highlight shell %}  ex: 2019-03-04 05:10:30  
 hour=01 (!=0)  
 minutes=10 (<15)  
-Restore: FULL backup + Inc1 to Inc4  {% endraw %} {% endhighlight %}
+Restore: FULL backup + Inc1 to Inc4   {% endhighlight %}
 
 3\. If hour=00 and minute<15, then this time FULL Backup process is going on, so we should not use this backup. In this case we should sync yesterday's FULL backup + Yesterday's Inc 1 to Inc 23.
 
 So this is my IF condition to select which file needs to sync.
 
-{% highlight html linenos %} {% raw %}d='2019-03-04 20:42:53"
+{% highlight shell %}d='2019-03-04 20:42:53"
 s_d=`echo $d | awk -F ' ' '{print $1}'`
 s_h=`echo $d | awk -F ' ' '{print $2}'| awk -F ':' '{print $1}'`
 s_m=`echo $d | awk -F ' ' '{print $2}' | awk -F ':' '{print $2}'`
@@ -106,7 +106,7 @@ echo "sync actual full only"
 else 
 echo "last day full + 23inc" 
 fi
-fi{% endraw %} {% endhighlight %}
+fi {% endhighlight %}
 
 ## Transfer.sh:
 
@@ -148,14 +148,14 @@ If you are not using transfer.sh then ignore this step.
 ### On Master:
 
 Replace `10.10.10.10` with your transfer.sh server IP.  
-{% highlight html linenos %} {% raw %}  
+{% highlight shell %}  
 vi /home/rundeck/.bashrc  
 transfer() {  
  curl --progress-bar --upload-file "$1" http://10.10.10.10/$(basename $1) |  
 tee /dev/null;  
 }  
 alias transfer=transfer  
-{% endraw %} {% endhighlight %}
+ {% endhighlight %}
 
 Save and close.
 
