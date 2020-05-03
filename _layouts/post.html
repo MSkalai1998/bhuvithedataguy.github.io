@@ -11,6 +11,9 @@ layout: default
     <a href="/tags/#{{tag}}">{{tag}}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
 
  <hr>
+ <h3>Advertisement</h3>
+{% include ads-horizontal.html %}
+<hr>
 {% if site.disqus.shortname %}
           {% include disqus-comments.html %}
         {% endif %}
