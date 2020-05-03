@@ -66,7 +66,7 @@ Then I found the PING not checking the DNS suffix.
 ### Solution:
 
 I have added the **domain name** in the DNS suffix.
-{% highlight html linenos %} {% raw %}Go to Control Panel.
+{% highlight shell %}Go to Control Panel.
 Network and Internet.
 Network and Sharing Center.
 Select your current network adapter.
@@ -74,7 +74,7 @@ Go to Properties.
 Internet Protocol version 4(TCP/IPv4).
 Under the DNS server properties click Advanced.
 Select the DNS tab.
-Add your domain name in the Append these DNS suffixes(in order).{% endraw %} {% endhighlight %}
+Add your domain name in the Append these DNS suffixes(in order). {% endhighlight %}
 
 
 ![Windows Server 2016 In AWS Unable To Resolve Public And Local DNS]({{ site.baseurl }}/assets/Windows-Server-2016-In-AWS-Unable-To-Resolve-Public-And-Local-DNS.png)
