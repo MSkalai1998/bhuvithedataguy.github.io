@@ -10,7 +10,7 @@ tags:
 - Cloud Spanner
 - NewSQL
 - Internals
-image: "/assets/Internals of Google Cloud Spanner.gif"
+image: "/assets/Internals of Google Cloud Spanner.jpg"
 ---
 
 I have learned a lot more internal things about Google Cloud Spanner from past two days. I read some of the portions of the Spanner white paper and the deep internal things from the Google Cloud Next event videos from Youtube. I'll share the video links here, but I want to summarize all the learnings in one place. Thats why I wrote this blog post. A special thanks to Deepti Srivastava(Product Manager for Spanner) who presented the Spanner Deep Dive sessions in the Google Cloud Next Event. 
