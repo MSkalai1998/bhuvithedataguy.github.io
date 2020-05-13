@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-04-26 20:00:00 +0530
-tagline: Generate RedShift copy command from SCT agent exported to S3 or Snowball with random string folders.  
+title: Redshift Copy Script From Sct Agent Export S3 Part1  
 description: AWS SCT Extraction Agents will help to pull the data from the various sources. Generate RedShift copy command from SCT agent exported to S3 or Snowball with random string folders. 
 categories:
 - RedShift
