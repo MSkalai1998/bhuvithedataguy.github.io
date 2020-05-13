@@ -59,7 +59,9 @@ You can use the following SQL query to find out which queries used how much disk
 
 * From `svl_query_summary` table there is column `query_temp_blocks_to_disk` will tell you how many blocks used to store the data on disk by a query.
 * From `stl_query` table `bytes` column will tell you exactly how much space consumed by this query. 
-While joining these two tables you can get better visibility about the complete query. You can even add more columns from both tables to get more useful insights. 
+While joining these two tables you can get better visibility about the complete query. 
+
+You can even add more columns from both tables to get more useful insights. 
 
 {% highlight sql%}
 -- Get the disk based queries information for last 2 days
