@@ -61,7 +61,7 @@ You can use the following SQL query to find out which queries used how much disk
 * From `stl_query` table `bytes` column will tell you exactly how much space consumed by this query. 
 While joining these two tables you can get better visibility about the complete query. You can even add more columns from both tables to get more useful insights. 
 
-```sql
+{% highlight sql%}
 -- Get the disk based queries information for last 2 days
 SELECT q.query, 
        q.endtime - q.starttime             AS duration, 
@@ -77,4 +77,5 @@ GROUP  BY q.query,
           q.querytxt, 
           duration, 
           aborted 
-ORDER  BY gigabytes DESC ```
+ORDER  BY gigabytes DESC 
+{% endhighlight %}
