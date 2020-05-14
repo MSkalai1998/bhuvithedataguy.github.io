@@ -1,7 +1,7 @@
 {% if page.comments != false and jekyll.environment == "production" %}
 <div id="disqus_thread">
 <div id="disqus_thread_loader">Loading Comments</div>
-<style>
+<script>
 var disqus_observer = new IntersectionObserver(function(entries) {
     // comments section reached
     // start loading Disqus now
@@ -22,8 +22,7 @@ var disqus_observer = new IntersectionObserver(function(entries) {
     }
 }, { threshold: [0] });
 disqus_observer.observe(document.querySelector("#disqus_thread"));
-</style>
+</script>
 </div>
 {% endif %}
-
 
