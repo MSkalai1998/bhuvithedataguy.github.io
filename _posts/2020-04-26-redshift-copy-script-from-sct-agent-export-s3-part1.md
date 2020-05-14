@@ -18,7 +18,8 @@ social:
     - https://github.com/BhuviTheDataGuy
 ---
 AWS SCT Extraction Agents will help to pull the data from the various data sources and push it into the targets. S3 and Snowball also can be a target for SCT Agent. But if we run the SCT Agent with multiple tasks and multiple agents they will export the data into S3 or Snowball with some string folder structure. If you want to push it into the RedShift then it is very difficult to import from the complex random string(UUID kind of) path. Recently we had an experience with this where we have to import around 20TB+ data from Snowball(later exported to S3) to RedShift. In this blog, Im going to share my experience and script to generate RedShift copy command from SCT agent exported to S3 or Snowball with random string folders. 
-![](/assets/RedShift Copy Command From SCT Agent Export In S3.png){:class="lazyload"}
+{% include lazyload.html image_src="/assets/RedShift Copy Command From SCT Agent Export In S3.png" image_alt="Redshift Copy Script From Sct Agent Export S3 Part" image_title="Redshift Copy Script From Sct Agent Export S3 Part" %}
+
 ## SCT Agent Terminology:
 
 Before explaining the solution, let's understand how the SCT agent works and its terminology.
