@@ -1,9 +1,7 @@
 {% if page.comments != false and jekyll.environment == "production" %}
-  <div class="page-comments">
-    <div id="disqus_thread"></div>
+ <div id="disqus_thread">
     <div id="disqus_thread_loader">Loading Comments</div>
-    <script>
-    var disqus_observer = new IntersectionObserver(function(entries) {
+     var disqus_observer = new IntersectionObserver(function(entries) {
     // comments section reached
     // start loading Disqus now
     if(entries[0].isIntersecting) {
@@ -13,7 +11,7 @@
         };
         (function() {
             var d = document, s = d.createElement('script');
-            s.src = 'https://bhuvithedataguy.disqus.com/embed.js';
+            s.src = 'https://your-website.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
@@ -23,10 +21,7 @@
     }
 }, { threshold: [0] });
 disqus_observer.observe(document.querySelector("#disqus_thread"));
-    
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-  </div>
+</div>
 {% endif %}
 
 
