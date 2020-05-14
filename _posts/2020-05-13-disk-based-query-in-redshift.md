@@ -26,9 +26,9 @@ RedShift is operating with the WorkLoad management system to allocate the number
 
 Recently I was working with a large dataset on RedShift where I have 1.5TB free space. A new complex SQL query starts to execute and it's killed within 10mins. I didn't know this then I got an alert notification that my disk was full. When I check the disk used graph from the console, the utilization went to 100%. Im sure that my ETL and other write operations are already done. Only read workloads are going on. So I wanted to take a look at all the queries that were running at this particular time. I filtered the queries bases on disk based from the `svl_query_summary`. This reveals who is the real monster in my cluster.
 
-![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift2.jpg "Disk Based Queries in RedShift")
+![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift2.jpg "Disk Based Queries in RedShift"){:class="lazyload"}
 
-![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift1.jpg "Disk Based Queries in RedShift")
+![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift1.jpg "Disk Based Queries in RedShift"){:class="lazyload"}
 
 See more than 3TB disk space used to store the intermediate results. Oh! that's very bad. When I check the query plan it was fine, no warning in that. Even till that time, I was thinking I have more 1.5TB free disk space and running the vacuum and analyze properly. I never thought I'll get a situation like this. Because the query was doing a lot of hash joins and the number of rows filtered by each step it so huge. 
 
@@ -51,7 +51,7 @@ It's not possible for everyone to find the cause whenever your cluster's disk wa
 
 In QMR, we have a rule called `Memory to Disk (1MB Blocks)` set the value 500. It means, if the block reaches 500000(1 block =1MB), then it may consume 500GB then it should Abort the query. And most of the time even it reaches 500000 blocks, it's not meaning that we consumed 500GB. Because the data stored on each block can be less than 1MB, then the overall storage consumed by these blocks may be less than 500GB, but still, it's a huge number. I won't any queries to hurt my cluster. Just kill it. But you have to set the action based on your requirement. Think twice before setting the Abort option. Then we can get the details from the Alert log table. 
 
-![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift3.jpg "Disk Based Queries in RedShift")
+![Disk Based Queries in RedShift](/assets/Disk Based Queries in RedShift3.jpg "Disk Based Queries in RedShift"){:class="lazyload"}
 
 ## How to calculate the total disk space used by a query:
 
