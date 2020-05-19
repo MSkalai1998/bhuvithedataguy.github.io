@@ -129,61 +129,61 @@ LOCATION
 {% highlight sql%}
 CREATE OR replace VIEW v_activitylog 
 AS 
-  SELECT Cast("Replace"("Replace"("Substring"("logtext", 3, ( 
-                                            "Strpos"("logtext", 'UTC') - 3 ) 
+  SELECT Cast(Replace(Replace(Substring(logtext, 3, ( 
+                                            Strpos(logtext, 'UTC') - 3 ) 
                                                  ), 'T', 
                                                  ' '), 'Z', '') AS TIMESTAMP) 
-            "timestamp", 
-         "Replace"("Substring"("Substring"("logtext", ( 
-                               "Strpos"("logtext", 'db=') 
+            timestamp, 
+         Replace(Substring(Substring(logtext, ( 
+                               Strpos(logtext, 'db=') 
                                + 3 )) 
                    , 1, 
-                             "Strpos"("Substring"("logtext", ( 
-                                      "Strpos"("logtext", 'db=') 
+                             Strpos(Substring(logtext, ( 
+                                      Strpos(logtext, 'db=') 
                                       + 3 )), 
                              ' ')), ' ', '') 
-         "db" 
+         db 
             , 
-         "Replace"("Substring"("Substring"("logtext", 
-                               ( "Strpos"("logtext", 'user=') + 5 
+         Replace(Substring(Substring(logtext, 
+                               ( Strpos(logtext, 'user=') + 5 
                                )), 1, 
-                             "Strpos"("Substring"("logtext", ( 
-                                      "Strpos"("logtext", 'user=') + 5 )), 
+                             Strpos(Substring(logtext, ( 
+                                      Strpos(logtext, 'user=') + 5 )), 
                              ' ')), ' ', '') 
-            "user", 
-         Cast("Replace"("Substring"("Substring"("logtext", ( 
-                                    "Strpos"("logtext", 'pid=') 
+            user, 
+         Cast(Replace(Substring(Substring(logtext, ( 
+                                    Strpos(logtext, 'pid=') 
                                     + 4 ) 
                                          ), 1, 
-                                       "Strpos"("Substring"("logtext", ( 
-                                                "Strpos"("logtext", 'pid=') + 4 
+                                       Strpos(Substring(logtext, ( 
+                                                Strpos(logtext, 'pid=') + 4 
                                                                        )), ' ')) 
               , 
               ' ', '' 
               ) AS INTEGER) 
-            "pid", 
-         Cast("Replace"("Substring"("Substring"("logtext", ( 
-                                    "Strpos"("logtext", 'userid=') + 
+            pid, 
+         Cast(Replace(Substring(Substring(logtext, ( 
+                                    Strpos(logtext, 'userid=') + 
                                          7 )), 1, 
-                                       "Strpos"("Substring"("logtext", ( 
-                                                "Strpos"("logtext", 'userid=') 
+                                       Strpos(Substring(logtext, ( 
+                                                Strpos(logtext, 'userid=') 
                                                 + 7 )), ' ')), ' ', '') AS 
               INTEGER 
             ) 
-            "userid", 
-         Cast("Replace"("Substring"("Substring"("logtext", ( 
-                                    "Strpos"("logtext", 'xid=') 
+            userid, 
+         Cast(Replace(Substring(Substring(logtext, ( 
+                                    Strpos(logtext, 'xid=') 
                                     + 4 ) 
                                          ), 1, 
-                                       "Strpos"("Substring"("logtext", ( 
-                                                "Strpos"("logtext", 'xid=') + 4 
+                                       Strpos(Substring(logtext, ( 
+                                                Strpos(logtext, 'xid=') + 4 
                                                                        )), ' ')) 
               , 
               ' ', '' 
               ) AS INTEGER) 
-            "xid", 
-         "Substring"("logtext", ( "Strpos"("logtext", 'LOG:') + 5 )) 
-            "query" 
+            xid, 
+         Substring(logtext, ( Strpos(logtext, 'LOG:') + 5 )) 
+            query 
   FROM   activitylog 
   WHERE  logtext != ''; 
 {% endhighlight %} 
