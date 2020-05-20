@@ -39,22 +39,22 @@ The rows that are inside an active blocks that are marked as deleted is called a
 ## A visual representation: 
 
 A normal block before any transaction.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation1.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation1.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Transaction 1: Read the data from Block 3. But still its not committed.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation2.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation2.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Transaction 2: Wants to update some rows in Block 3. But it is already used by Transaction 1. So it'll clone that block to a new block. 
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation3.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation3.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Updates will be performed on the new block. Then it'll commit the transaction.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation4.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation4.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Then the old block will be marked as deleted.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation5.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation5.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 After Transaction 1 commits, it leaves the old block as it is. It's is the tombstone block now.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation6.png" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation6.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 
 ## Find the Tombstone blocks in RedShift? 
