@@ -14,7 +14,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/RedShift Tombstone Blocks a visual explanation.JPG"
+image: "/assets/RedShift Tombstone Blocks a visual explanation.jpg"
 ---
 Redshift tombstone blocks and Ghost rows are similarly the same. Due to RedShift's(aka PostgreSQL) MPP architecture and MVCC, the rows that we are going to update or delete will not be removed from the Disk. In RedShift's term, the blocks are immutable. When we did the delete operation or Update the rows will be marked for deletion and these rows are called Ghost rows. They will be permanently removed while running the vacuum. While going deep into the storage optimization on RedShift I found something Tombstone blocks. In AWS there is only one doc that gives us a small description of this. It was not clear to me, I reached out to AWS for understanding this in a better way. So writing this blog to share my understanding with everyone. 
 
