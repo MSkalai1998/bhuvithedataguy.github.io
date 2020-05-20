@@ -14,7 +14,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/RedShift Tombstone Blocks a visual explanation.jpg"
+image: "/assets/RedShift Tombstone Blocks a visual explanation.JPG"
 ---
 Redshift tombstone blocks and Ghost rows are similarly the same. Due to RedShift's(aka PostgreSQL) MPP architecture and MVCC, the rows that we are going to update or delete will not be removed from the Disk. In RedShift's term, the blocks are immutable. When we did the delete operation or Update the rows will be marked for deletion and these rows are called Ghost rows. They will be permanently removed while running the vacuum. While going deep into the storage optimization on RedShift I found something Tombstone blocks. In AWS there is only one doc that gives us a small description of this. It was not clear to me, I reached out to AWS for understanding this in a better way. So writing this blog to share my understanding with everyone. 
 
@@ -39,22 +39,22 @@ The rows that are inside an active blocks that are marked as deleted is called a
 ## A visual representation: 
 
 A normal block before any transaction.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation1.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation1.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Transaction 1: Read the data from Block 3. But still its not committed.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation2.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation2.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Transaction 2: Wants to update some rows in Block 3. But it is already used by Transaction 1. So it'll clone that block to a new block. 
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation3.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation3.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Updates will be performed on the new block. Then it'll commit the transaction.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation4.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation4.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 Then the old block will be marked as deleted.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation5.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation5.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 After Transaction 1 commits, it leaves the old block as it is. It's is the tombstone block now.
-{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation6.jpg" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
+{% include lazyload.html image_src="/assets/RedShift Tombstone Blocks a visual explanation6.JPG" image_alt="RedShift Tombstone Blocks a visual explanation" image_title="RedShift Tombstone Blocks a visual explanation" %}
 
 
 ## Find the Tombstone blocks in RedShift? 
