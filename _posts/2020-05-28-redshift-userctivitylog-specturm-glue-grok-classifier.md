@@ -104,7 +104,7 @@ import re
 import gzip
 import os
 
-inputdir='/tmp/input/'
+inputdir=`/tmp/input/`
 
 for file_name in os.listdir(inputdir):
     with gzip.open('/tmp/input/'+file_name, 'rb') as f,open('/tmp/output/custom'+file_name.replace('.gz',''), 'w') as fout:
