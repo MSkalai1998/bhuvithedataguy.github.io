@@ -174,7 +174,7 @@ We are done now, Lets do a sample query.  Here Im going to use Athena only, but 
 {% highlight sql%}
 select user,count(*)as count from activitylog group by user;
 {% endhighlight %}
-{% include lazyload.html image_src="/assets/RedShift User Activity Log In Specturm With Glue Grok.JPG" image_alt="RedShift User Activity Log In Specturm With Glue Grok" image_title="RedShift User Activity Log In Specturm With Glue Grok" %}
+{% include lazyload.html image_src="/assets/Analyze RedShift user activity logs With Athena3.jpg" image_alt="RedShift User Activity Log In Specturm With Glue Grok" image_title="RedShift User Activity Log In Specturm With Glue Grok" %}
 
 
 
