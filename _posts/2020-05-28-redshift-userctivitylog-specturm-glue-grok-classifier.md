@@ -94,7 +94,7 @@ def lambda_handler(event, context):
 
 You can use the same python code to run it on EC2 instance as well. Download the files to ec2 and then run this function.
 
-Download the files to `/tmp/input/'
+Download the files to `/tmp/input/`
 
 {% highlight python%}
 import json
