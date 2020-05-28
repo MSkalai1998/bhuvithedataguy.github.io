@@ -212,3 +212,9 @@ Here we are extracting the user, query, pid and everything with SQL operations w
 ## How about Spectrum?
 
 Yes, you can use the same DDL query to create your external table and (I hope everything will work fine there as well). 
+
+## Update: 2020-05-28
+
+I have added a new blog where we can use Glue Grok patten as a custom classifier to query the useractivity log data. Read the blog here.
+
+[https://thedataguy.in/redshift-userctivitylog-specturm-glue-grok-classifier](https://thedataguy.in/redshift-userctivitylog-specturm-glue-grok-classifier)
