@@ -25,8 +25,8 @@ So we'll never face any downtime while changing this.
 
 We are using manual WLM, and we know the workload very well. I had a requirement that all of the ETL processes are running from 12 AM to around 6 AM. So I want to allocate almost all the memory to the ETL users group. Then After 8 AM to 6 PM, it is heavily used by BI users. 
 
-* ** 6 PM - 8 AM ** 90% memory to ETL users.
-* ** 8 AM - 6 PM **  90% memory to BI users.
+* 6 PM - 8 AM - 90% memory to ETL users.
+* 8 AM - 6 PM - 90% memory to BI users.
 
 So I need to trigger the lambda function 2 times in a day. I don't want to use 2 different lambda functions for this. So Im my lambda function, I'll get the current hour,  based on that it'll decide when configuration should be applied. 
 
