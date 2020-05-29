@@ -34,7 +34,9 @@ So I need to trigger the lambda function 2 times in a day. I don't want to use 2
 
 ## Create config files:
 
-I recommend you that instead of manually typing this configuration values, just create a new parameter group with your queues, QMR rules and etc. Then you can get the JSON content from the WLM window. Just copy that and upload it to the S3 bucket. Similarly, one config file the next set of config and upload to S3. Here are my config files. 
+I recommend you that instead of manually typing this configuration values, just create a new parameter group with your queues, QMR rules, Concurrency scaling and etc. Then you can get the JSON content from the WLM window. Just copy that and upload it to the S3 bucket. Similarly, one config file the next set of config and upload to S3. 
+
+Here are my config files. (just a sample files without QMR and Concurrency scaling)
 
 **For ETL users:** power-etl.json
 {% highlight json%}
