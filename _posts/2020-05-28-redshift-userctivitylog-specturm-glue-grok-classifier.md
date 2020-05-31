@@ -1,7 +1,7 @@
 ---
-title: RedShift User Activity Log In Specturm With Glue Grok
+title: RedShift User Activity Log In Spectrum With Glue Grok
 date: 2020-05-28 20:15:00 +0530
-description: Analyze RedShift user activity log(useractivitylog) with RedShift Specturm. We can use Glue custom classifier with Grok patten to make it queryable. Also the same table can be accessed from Athena as well. 
+description: Analyze RedShift user activity log(useractivitylog) with RedShift Spectrum. We can use Glue custom classifier with Grok patten to make it queryable. Also the same table can be accessed from Athena as well. 
 categories:
 - RedShift
 tags:
@@ -11,7 +11,7 @@ tags:
 - athena
 - lambda
 - python
-image: "/assets/RedShift User Activity Log In Specturm With Glue Grok.jpg"
+image: "/assets/RedShift User Activity Log In Spectrum With Glue Grok.jpg"
 
 ---
 
@@ -169,12 +169,12 @@ LOCATION
   's3://mybucket/bhuvi-cleansed-data/'
 {% endhighlight %}
 
-We are done now, Lets do a sample query.  Here Im going to use Athena only, but the same query will on Specturm.
+We are done now, Lets do a sample query.  Here Im going to use Athena only, but the same query will on Spectrum.
 
 {% highlight sql%}
 select user,count(*)as count from activitylog group by user;
 {% endhighlight %}
-{% include lazyload.html image_src="/assets/Analyze RedShift user activity logs With Athena3.jpg" image_alt="RedShift User Activity Log In Specturm With Glue Grok" image_title="RedShift User Activity Log In Specturm With Glue Grok" %}
+{% include lazyload.html image_src="/assets/Analyze RedShift user activity logs With Athena3.jpg" image_alt="RedShift User Activity Log In Spectrum With Glue Grok" image_title="RedShift User Activity Log In Spectrum With Glue Grok" %}
 
 
 
