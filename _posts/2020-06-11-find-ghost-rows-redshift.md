@@ -127,3 +127,7 @@ group by
 {% endhighlight %}	
 
 But there is one limitation here, if your table is never queried or accessed, then that table will not shown in the result.
+
+## How do we fix them:
+
+[Read about my vacuum analyze utility](https://thedataguy.in/automate-redshift-vacuum-analyze-using-shell-script-utility/)
