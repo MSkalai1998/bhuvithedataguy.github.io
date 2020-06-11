@@ -164,7 +164,7 @@ from
 LEFT JOIN result_set c on
 	a.tbl = c.table_id
 where
-	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '2 days')
+	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '5 days')
 	and perm_table_name not in ('Internal Worktable',
 	'S3')
 	and is_rlf_scan = 'f'
@@ -245,7 +245,7 @@ from
 LEFT JOIN result_set c on
 	a.tbl = c.table_id
 where
-	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '2 days')
+	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '5 days')
 	and perm_table_name not in ('Internal Worktable',
 	'S3')
 	and is_rlf_scan = 'f'
