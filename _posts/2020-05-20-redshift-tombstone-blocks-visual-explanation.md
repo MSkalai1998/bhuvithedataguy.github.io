@@ -76,7 +76,7 @@ HAVING Count(CASE
 ORDER  BY 2 DESC; 
 {% endhighlight %}
 
-Also, you can use the following query to get the list of tombstone blocks per node.
+Also, you can use the following query to know then these blocks are added.
 {% highlight sql%}
 -- Credits: AWS
 SELECT node, 
