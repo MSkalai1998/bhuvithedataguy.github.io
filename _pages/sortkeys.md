@@ -15,6 +15,7 @@ social:
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
 image: "/assets/rstk/ables without sort key.png"
+permalink: /rstk/sortkeys
 ---
 
 ## RStoolKit Result: Tables without sort key
