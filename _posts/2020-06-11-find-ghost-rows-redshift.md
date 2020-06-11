@@ -52,7 +52,7 @@ It makes sense right?  The difference between the rows_pre_filter  and rows_pre_
 * So for those tables, get the recent query from the past 5 days. 
 * Now do the ghost row calculation.
 
-## Query to find the Ghost Rows:
+## Query to find the Ghost Rows on all the tables:
 {% highlight sql%}
 with cte as (
 select
@@ -125,6 +125,171 @@ group by
 	"schema" ,
 	"table";
 {% endhighlight %}	
+
+## Find Ghost rows per Slice for a particular table:
+{% highlight sql%}
+with cte as (
+select
+	table_id,
+	status,
+	eventtime
+from
+	stl_vacuum
+where
+	( status = 'Started'
+	or status like '%Started Delete Only%'
+	or status like '%Finished%') ),
+result_set as (
+select
+	table_id ,
+	max(a.eventtime)as vacuum_timestamp
+from
+	cte a
+where
+	a.status like '%Finished%'
+group by
+	table_id ) ,
+raw_gh as(
+select
+	query,
+	tbl,
+	perm_table_name ,
+	segment,
+	slice,
+	sum(a.rows_pre_filter) as rows_pre_filter ,
+	sum(a.rows_pre_user_filter) as rows_pre_user_filter ,
+	sum(a.rows_pre_filter-a.rows_pre_user_filter)as ghrows
+from
+	stl_scan a
+LEFT JOIN result_set c on
+	a.tbl = c.table_id
+where
+	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '2 days')
+	and perm_table_name not in ('Internal Worktable',
+	'S3')
+	and is_rlf_scan = 'f'
+	and (a.rows_pre_filter <> 0
+	and a.rows_pre_user_filter <> 0
+	and perm_table_name = 'my_table_name' ) -- Use your table name
+group by
+	segment,
+	slice,
+	query,
+	tbl,
+	perm_table_name ),
+ran as(
+select
+	*,
+	dense_rank() over (partition by tbl
+order by
+	query desc,
+	segment desc) as rnk
+from
+	raw_gh )
+select
+	b."schema",
+	b."table",
+	slice,
+	sum(rows_pre_filter) as total_rows,
+	sum(rows_pre_user_filter) as valid_rows,
+	sum(ghrows) as ghost_rows
+from
+	ran a
+join pg_catalog.svv_table_info b on
+	a.tbl = b.table_id
+where
+	rnk = 1
+group by
+	"schema" ,
+	"table",
+	slice
+order by
+	slice;
+{% endhighlight %}	
+
+## Find Ghost rows Per Node for a table:
+{% highlight sql%}
+with cte as (
+select
+	table_id,
+	status,
+	eventtime
+from
+	stl_vacuum
+where
+	( status = 'Started'
+	or status like '%Started Delete Only%'
+	or status like '%Finished%') ),
+result_set as (
+select
+	table_id ,
+	max(a.eventtime)as vacuum_timestamp
+from
+	cte a
+where
+	a.status like '%Finished%'
+group by
+	table_id ) ,
+raw_gh as(
+select
+	query,
+	tbl,
+	perm_table_name ,
+	segment,
+	slice,
+	sum(a.rows_pre_filter) as rows_pre_filter ,
+	sum(a.rows_pre_user_filter) as rows_pre_user_filter ,
+	sum(a.rows_pre_filter-a.rows_pre_user_filter)as ghrows
+from
+	stl_scan a
+LEFT JOIN result_set c on
+	a.tbl = c.table_id
+where
+	a.starttime > coalesce(c.vacuum_timestamp, CURRENT_TIMESTAMP - INTERVAL '2 days')
+	and perm_table_name not in ('Internal Worktable',
+	'S3')
+	and is_rlf_scan = 'f'
+	and (a.rows_pre_filter <> 0
+	and a.rows_pre_user_filter <> 0
+	and perm_table_name = 'my_table_name' ) -- Use your table name
+
+group by
+	segment,
+	slice,
+	query,
+	tbl,
+	perm_table_name ),
+ran as(
+select
+	*,
+	dense_rank() over (partition by tbl
+order by
+	query desc,
+	segment desc) as rnk
+from
+	raw_gh )
+select
+	b."schema",
+	b."table",
+	c.node,
+	sum(rows_pre_filter) as total_rows,
+	sum(rows_pre_user_filter) as valid_rows,
+	sum(ghrows) as ghost_rows
+from
+	ran a
+join pg_catalog.svv_table_info b on
+	a.tbl = b.table_id
+join stv_slices c on
+	a.slice = c.slice
+where
+	rnk = 1
+group by
+	"schema" ,
+	"table",
+	node
+order by
+	node;
+{% endhighlight %}
 
 But there is one limitation here, if your table is never queried or accessed, then that table will not shown in the result.
 
