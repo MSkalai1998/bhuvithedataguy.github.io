@@ -52,7 +52,7 @@ ORDER  BY gigabytes DESC
 
 ## How to fix them:
 
-We don't much options here. 
+We don't have much options here. 
 
 - Give enough memory for all the sessions. This can achieved via better work load management settings.
 - Optimize your queries.
