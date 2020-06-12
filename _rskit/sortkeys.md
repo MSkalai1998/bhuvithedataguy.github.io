@@ -8,14 +8,15 @@ categories:
 tags:
 - aws
 - redshift
+- rstoolkit
 social:
   name: Bhuvanesh
   links:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/rstk/ables without sort key.png"
-permalink: /rstk/sortkeys
+image: "/assets/rskit/ables without sort key.png"
+permalink: /rskit/sortkeys
 ---
 
 ## RStoolKit Result: Tables without sort key
@@ -32,11 +33,11 @@ select * from table where id between 32 and 35;
 
 For this query, if your table has sort on the ID column, then it'll hit the block number 3 and retrieve the data. See the below image.
 
-![Tables without sort key](/assets/rstk/Tables without sort key.png)
+![Tables without sort key](/assets/rskit/Tables without sort key.png)
 
 See the below image is an illustration of the same table without sort key. Now, if you run the same query it has to scan block 3,6 and 9 to retrieve the data. 
 
-![Tables without sort key](/assets/rstk/Tables without sort key1.png)
+![Tables without sort key](/assets/rskit/Tables without sort key1.png)
 
 ## Find the tables names without sort key
 
