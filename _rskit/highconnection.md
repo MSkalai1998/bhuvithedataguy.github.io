@@ -16,7 +16,7 @@ social:
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
 image: "/assets/rskit/maxconnection.png"
-permalink: /rskit/maxconnection
+permalink: /rskit/highconnection
 ---
 
 ## RStoolKit Result: WLM max connection hit

@@ -27,7 +27,7 @@ Genially all the relation databases will perform all the process like Filtering,
 
 Temp spaces are nothing but the disk based queries only.
 
-> **Pro Tip:** [*A detailed blog post](https://thedataguy.in/disk-based-query-in-redshift/) able disk based queries where it can take more than 3TB for temp tables.*
+> **Pro Tip:** [A detailed blog post](https://thedataguy.in/disk-based-query-in-redshift/) able disk based queries where it can take more than 3TB for temp tables.
 
 ## Find the disk based queries:
 
