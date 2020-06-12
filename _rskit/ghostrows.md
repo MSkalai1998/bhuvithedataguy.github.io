@@ -26,7 +26,7 @@ RedShift is built on top of PostgreSQL database. In PostgreSQL you may familiar 
 ## Find Ghost rows:
 
 Use the following query to find the ghost rows for all the tables.  You can refer **[this link](https://thedataguy.in/find-ghost-rows-redshift/)** to get more detailed information about the ghost rows. 
-
+[https://thedataguy.in/find-ghost-rows-redshift/](https://thedataguy.in/find-ghost-rows-redshift/)
 ```sql
 with cte as (
 select
