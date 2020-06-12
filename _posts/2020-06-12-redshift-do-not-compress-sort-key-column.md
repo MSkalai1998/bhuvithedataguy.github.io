@@ -46,7 +46,7 @@ select * from table where id = 1
 ## Real world Example:
 
 - Think a table with 30 rows. 2 columns (ID and comments)
-- The ID column is compressed.  After compression the size is 800KB. So all the 30 rows will fit it single block.
+- The ID column is compressed.  After compression lets say the size is 800KB. So all the 30 rows will fit it single block.
 - Now the comments column data is pretty large and even after applying the compression the size is 2.8MB. So it consumed 3 blocks.
 
 ![/assets/redshift-do-not-compress-sort-key-column/redshift-do-not-compress-sort-key-column3.png](/assets/redshift-do-not-compress-sort-key-column/redshift-do-not-compress-sort-key-column3.png)
