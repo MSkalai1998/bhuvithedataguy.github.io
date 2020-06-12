@@ -29,7 +29,7 @@ You can use the [RedShift Admin script](https://github.com/awslabs/amazon-redshi
 
 This is a CPU intensive query, single node cluster will consumpe full CPU. so please run this during non production hours, or closly monitor the cluster.
 
-Run the wlm_apex_hourly.sql query.
+Run the `wlm_apex_hourly.sql` query.
 
 ![/assets/rskit/maxconnection.png](/assets/rskit/maxconnection.png)
 
