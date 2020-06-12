@@ -15,7 +15,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/rskit/maxconnection.png"
+image: "/assets/rskit/highconnection.png"
 permalink: /rskit/highconnection
 ---
 
