@@ -31,7 +31,7 @@ This is a CPU intensive query, single node cluster will consumpe full CPU. so pl
 
 Run the `wlm_apex_hourly.sql` query.
 
-![/assets/rskit/maxconnection.png](/assets/rskit/maxconnection.png)
+![/assets/rskit/highconnection.png](/assets/rskit/highconnection.png)
 
 From the above result, you can see my peak hour is 21 to 23. During this window Im getting more number of connections. 
 
