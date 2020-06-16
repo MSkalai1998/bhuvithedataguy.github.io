@@ -9,7 +9,7 @@ tags:
 - redshift
 image: "/assets/find-ghost-rows-redshift/Find Ghost Rows Dead Rows For All The Tables In RedShift.jpg"
 ---
-Ghost rows or Dead rows in RedShift is a Red flag for the cluster's performance. RedShift is built on top of the PostgreSQL database. To support MVCC PostgreSQL will handle the delete and the updates in a different way. Delete will not remove the data from the disk/block. Instead, the row will be marked as deleted. It's a soft delete. For Updates its a combination of `Delete + Insert`. The existing row will be marked as deleted and a new row will be inserted with the updated values. In Redshift, we have 3 Pseudo columns.
+Ghost rows or Dead rows in RedShift is a Red flag for the cluster's performance. In this article we are going to see how to find the ghost rows or dead rows in RedShift. RedShift is built on top of the PostgreSQL database. To support MVCC PostgreSQL will handle the delete and the updates in a different way. Delete will not remove the data from the disk/block. Instead, the row will be marked as deleted. It's a soft delete. For Updates its a combination of `Delete + Insert`. The existing row will be marked as deleted and a new row will be inserted with the updated values. In Redshift, we have 3 Pseudo columns.
 
 1. INSERT_XID
 2. DELETE_XID
