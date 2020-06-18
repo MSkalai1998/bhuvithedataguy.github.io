@@ -155,9 +155,9 @@ hour=current_timestamp.strftime("%H")
 
 
 if hour == '06':
-    config = 'power-etl'
-elif hour == '18':
     config = 'power-bi'
+elif hour == '18':
+    config = 'power-etl'
 else:
     print("Wrong timing")
     exit()
