@@ -26,7 +26,7 @@ It is empty. Then I checked the cluster status, it was Red.
 
 I checked the logs on the master nodes and the data nodes, but nothing was there. Then I started thinking will troubleshoot step by step. 
 
-# #1: I don't have any clue
+# #1 I don't have any clue
 
 The Log file says, everything is fine, No reason why it's failing. I have only one thing in which the state is Red. Fine, will see what else we can get from the status.
 ```bash
@@ -68,7 +68,7 @@ my_index_name 23  p UNASSIGNED   NEW_INDEX_RESTORED
 # #2 why it is unassigned: 
 
 Now we have a clue that all the shards in the index are unassigned. Lets extract the reason why it is unassigned. 
-``bash
+```bash
 curl -XGET localhost:9200/_cluster/allocation/explain?pretty
 
 --Output truncated
