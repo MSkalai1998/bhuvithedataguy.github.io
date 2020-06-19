@@ -26,7 +26,7 @@ It is empty. Then I checked the cluster status, it was Red.
 
 I checked the logs on the master nodes and the data nodes, but nothing was there. Then I started thinking will troubleshoot step by step. 
 
-# #1 I don't have any clue
+## #1 I don't have any clue
 
 The Log file says, everything is fine, No reason why it's failing. I have only one thing in which the state is Red. Fine, will see what else we can get from the status.
 ```bash
@@ -65,7 +65,7 @@ my_index_name 50  r UNASSIGNED   NEW_INDEX_RESTORED
 my_index_name 23  p UNASSIGNED   NEW_INDEX_RESTORED
 ```
 
-# #2 why it is unassigned: 
+## #2 why it is unassigned: 
 
 Now we have a clue that all the shards in the index are unassigned. Lets extract the reason why it is unassigned. 
 ```bash
@@ -106,13 +106,13 @@ Take a look at the output on each node. They all are saying the same reason
  
 Ser the second error message. This error is something new, you may get the same error, but the see the filer. It is indicating something `i2.2xlarge OR i3.2xlarge` which is uncommon. But we know that this is our Managed ElasticSearch instance type. So now we found that the indices are having an AWS specific filter. 
 
-# #3 How to remove this filter:
+## #3 How to remove this filter:
 
 We can skip this filter while taking the snapshot, but in my case, its already done and its pretty huge snapshot (a few TBs). So I need to look at the alternate options. I was thinking, is this possible to skip this particular setting while restoring?. 
 
 Yes, it is possible. Here is the [documentation link](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html#_changing_index_settings_during_restore). 
 
-# #4 Restore the snapshot:
+## #4 Restore the snapshot:
 
 We are good now, we found the cause and the solution. But what is the exact setting name that we should use to skip?. 
 We need to get that from the source cluster or even the previous restoration failed but the index got created without the data. Lets get the setting from the target cluster itself. Or you can simply get it from the allocation API output as well.
