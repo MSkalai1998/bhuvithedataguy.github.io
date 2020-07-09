@@ -17,7 +17,7 @@ In any MySQL replication or migration, generally, we'll skip the `mysql` databas
 
 ```bash
 -- Get grants
-mysql -h IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A -e"SELECT CONCAT('SHOW GRANTS FOR ''',user,'''@''',host,''';') FROM mysql.user WHERE user<>''" | mysql -h IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A | sed 's/$/;/g' > user_grants.sql
+mysql -h SOURCE_DB_IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A -e"SELECT CONCAT('SHOW GRANTS FOR ''',user,'''@''',host,''';') FROM mysql.user WHERE user<>''" | mysql -h IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A | sed 's/$/;/g' > user_grants.sql
 
 -- clean up the password field
 sed -i 's/IDENTIFIED BY PASSWORD <secret>//g' user_grants.sql
