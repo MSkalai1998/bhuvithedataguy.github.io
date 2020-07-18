@@ -53,6 +53,11 @@ psql -h bhuvi-pg-96.chbcar19iy5o.us-east-1.rds.amazonaws.com -U appuser -d testd
 testdb=> create table numbers (num int);
 testdb=> insert into numbers values (1),(2);
 
+testdb=> \d+
+                       List of relations
+ Schema |  Name   | Type  |  Owner  |    Size    | 
+--------+---------+-------+---------+------------+-
+ public | numbers | table | appuser | 8192 bytes |
 ```
 Lets take the dump with the master user(part of rds_superuser role)
 ```sql
@@ -77,6 +82,18 @@ grant SELECT  on public.numbers to postgres ;
 ```
 If you have a tons of tables in your database, it may difficult to do the grant one by one. So you can use the following script to generate the grant staement and execute.
 
+Lets say I have 4 tables with different owners.
+
+```sql
+testdb=> \d+
+                           List of relations
+ Schema |     Name      | Type  |   Owner   |    Size    |
+--------+---------------+-------+-----------+------------+
+ public | analytics_tbl | table | analytics | 8192 bytes |
+ public | dba_tbl       | table | dba       | 8192 bytes |
+ public | devops_tbl    | table | devops    | 8192 bytes |
+ public | numbers       | table | appuser   | 8192 bytes |
+```
 ```bash
 #/bin/bash
 
