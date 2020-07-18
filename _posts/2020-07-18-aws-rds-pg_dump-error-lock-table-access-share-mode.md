@@ -94,6 +94,19 @@ testdb=> \d+
  public | devops_tbl    | table | devops    | 8192 bytes |
  public | numbers       | table | appuser   | 8192 bytes |
 ```
+Create the `pgpass` file to skip the password prompt.
+```bash
+
+vi ~/.pgpass
+
+bhuvi-rdsendpoint.rds.amazonaws.com:5432:testdb:appuser:apppassword
+bhuvi-rdsendpoint.rds.amazonaws.com:5432:testdb:dba:dba
+bhuvi-rdsendpoint.rds.amazonaws.com:5432:testdb:analytics:analytics
+bhuvi-rdsendpoint.rds.amazonaws.com:5432:testdb:devops:devops
+
+chmod 600 ~/.pgpass
+```
+Create a shell script to generate the grant and import the grants.
 ```bash
 #/bin/bash
 
