@@ -26,13 +26,13 @@ In RDS we can't create/grant native postgresql's`super_user` privilege instead w
 
 ## Problem statement:
 
-In AWS RDS PostgreSQL (v 9.6 or lesser than 9.6), the rds_superuser can't read/write the on the tables which are owned by a different user. To perform read and write the table owner needs to grant the privileage to the rds_superuser's speratly. This is fully right? 
+In AWS RDS PostgreSQL (v 9.6 or lesser than 9.6), the rds_superuser can't read/write the on the tables which are owned by a different user. To perform read and write the table owner needs to grant the privilege to the rds_superuser's separately. This is fully right? 
 
 A lot of people already aware of this, but how about pg_dump? thats what we are going to reproduce.
 
 ## Reproduce the issue:
 
-I have spin up an RDS PostgreSQL 9.6 to reproduce this issue.
+I have spun up an RDS PostgreSQL 9.6 to reproduce this issue.
 RDS Master user name: postgres
 Password: postgres
 
@@ -71,7 +71,7 @@ As I explained from the beginning, the RDS master user has the `rds_superuser` r
 
 ## Solution: 
 
-To solve this issue, the table owner must be grant the select(and other access) to the RDS master user. Then we can take the dump.
+To solve this issue, the table owner must be granted the select(and other access) to the RDS master user. Then we can take the dump.
 
 ```sql
 psql -h bhuvi-pg-96.chbcar19iy5o.us-east-1.rds.amazonaws.com -U appuser -d testdb
@@ -80,7 +80,7 @@ grant SELECT  on public.numbers to postgres ;
 -- Now take the dump with Postgres user:
  pg_dump -h bhuvi-pg-96.chbcar19iy5o.us-east-1.rds.amazonaws.com -U postgres -d testdb > dump.sql
 ```
-If you have a tons of tables in your database, it may difficult to do the grant one by one. So you can use the following script to generate the grant staement and execute.
+If you have a tons of tables in your database, it may difficult to do the grant one by one. So you can use the following script to generate the grant statement  and execute.
 
 Lets say I have 4 tables with different owners.
 
@@ -126,4 +126,4 @@ done
 
 ## Conclusion:
 
-We found this issue on RDS PostgreSQL 9.6 and lesser than that. But it is fixed on 10,11 and 12. Even though it is very older version, but may companies are still running this. So it would be great that AWS fix it from their end.
+We found this issue on RDS PostgreSQL 9.6 and lesser than that. But it is fixed on 10,11 and 12. Even though it is a very older version, but may companies are still running this. So it would be great that AWS fix it from their end.
