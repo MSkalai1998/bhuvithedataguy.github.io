@@ -32,7 +32,8 @@ GCP StackDriver Logs can be exported to GCS and BigQuery as well. The data expor
 
 ## Create the Cloud Function:(Python 3.8)
 
-** Requirements:**
+### Requirements:
+
 1. Service account with GCS Admin access to perform the COPY and Delete processes.
 2. Python 3.7 or 3.8
 3. Trigger: Cloud Storage 
