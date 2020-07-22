@@ -128,4 +128,6 @@ You may think like use the source and target buckets as same, but the prefix is 
 The first source file generated the paition with year=2020/
 then that paritioned file created one more parition like year=year=2020 then again one more for this, the loop is infinite. 
 
+A special thanks to [Dustin Ingram](https://stackoverflow.com/questions/63035086/gcp-cloud-function-python-gcs-copy-files-duplicate-files/63038186#63038186) who helped me to figure this out.
+
 Unfortunatly in GCP, we don't have control on filter the some prefix based triggers. So if you want to use this, the source and the target buckets must be different.
