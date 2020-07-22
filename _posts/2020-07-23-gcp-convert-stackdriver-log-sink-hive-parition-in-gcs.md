@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-07-23 00:45:00 +0530
-title: GCP Convert StackDriver Log Sink As Hive Parition In GCS
+title: GCP Convert StackDriver Log Sink As Hive Partition In GCS
 description: In GCP convert stackdrive log GCS sink to Hive partition format to efficiently use BigQuery external table.
 categories:
 - GCP
@@ -16,13 +16,13 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Parition In GCS.jpg"
+image: "/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Partition In GCS.jpg"
 ---
 GCP StackDriver Logs can be exported to GCS and BigQuery as well. The data export on GCS will be a clean directory structure. It'll be like `gs://bucket/prefix/yyyy/mm/dd/file`. Its looks good. Recently we were working on some application log sink from multiple VMs to GCS via StackDriver agent. So the logs first pushed to StackDriver logging then we created a sink to GCS bucket. But later we got a new requirement that sometimes the app developers want to see the data for a particular date. Unfortunately, the current directory structure will not help us to do this. As per BigQuery's Hive partition format, we need to keep the directory structure with `directory-name=somevalue`. Also in stackdriver sink we can't make this change. So decided to make this change when the file arrives at the GCS bucket.
 
 ## The file processing flow:
 
-{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Parition In GCS.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Parition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Parition In GCS" %}
+{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Partition In GCS.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Partition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Partition In GCS" %}
 
 * When the Stackdriver sink push the log file to GCS storage, then we can trigger the cloud function.
 * The Cloud function will get the file name(full path from the prefix)
@@ -106,7 +106,7 @@ gs://target-bucket/hivelog/year=2020/month=07/day=20/MOCK_DATA.json
 ## BigQuery External Table:
 
 Now we can create a BigQuery external table with partition.
-{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Parition In GCS-bq.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Parition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Parition In GCS" %}
+{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Partition In GCS-bq.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Partition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Partition In GCS" %}
 
 I have 2 files from two different dates. Each file has 1000 lines. Lets query the data and see the Hive partition is working or not.
 ```sql
@@ -124,9 +124,9 @@ Yes, we got the expected results. This is just with a small number of files. But
 ## What will happen if we COPY from same bucket:
 
 You may think like use the source and target buckets as same, but the prefix is different? We tried it and see what happened? 
-{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Parition In GCS-bq1.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Parition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Parition In GCS" %}
+{% include lazyload.html image_src="/assets/gcs-hive-partition/GCP Convert StackDriver Log Sink As Hive Partition In GCS-bq1.jpg" image_alt="GCP Convert StackDriver Log Sink As Hive Partition In GCS" image_title="GCP Convert StackDriver Log Sink As Hive Partition In GCS" %}
 The first source file generated the paition with year=2020/
-then that paritioned file created one more parition like year=year=2020 then again one more for this, the loop is infinite. 
+then that Partitioned file created one more Partition like year=year=2020 then again one more for this, the loop is infinite. 
 
 A special thanks to [Dustin Ingram](https://stackoverflow.com/questions/63035086/gcp-cloud-function-python-gcs-copy-files-duplicate-files/63038186#63038186) who helped me to figure this out.
 
