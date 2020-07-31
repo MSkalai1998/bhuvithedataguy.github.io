@@ -132,7 +132,7 @@ def hello_gcs_generic(data, context):
     print("Loaded {} rows.".format(destination_table.num_rows))
 			
 ```
-## 4 StackDriver PubSub Sink:
+## #5 StackDriver PubSub Sink:
 
 Go to logging and create a new filter using the following lines. But replace these things.
 
@@ -151,7 +151,7 @@ protoPayload.serviceData.jobCompletedEvent.job.jobStatus.state="DONE"
 
 Now click on the create sink and the sink service as PubSub.
 
-## #5 Schedule Query in BQ:
+## #6 Schedule Query in BQ:
 
 For mering the Data from the staging table to the main table, we can directly use a SQL query from the CloudFunction. But I want to do it in a different way. So we need to create a scheduled query that will run the merge SQL command.
 ```sql
@@ -181,7 +181,7 @@ Once its created, go to Scheduled queries --> Query Name --> Config. You can see
 
 {% include lazyload.html image_src="/assets/bq-cf/BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub3.jpg" image_alt="BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub" image_title="BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub" %}
 
-## #6 CloudFunction to trigger scheduled query:
+## #7 CloudFunction to trigger scheduled query:
 
 **Configuration** - Same as the previous Cloud Function. 
 
@@ -228,7 +228,7 @@ def hello_pubsub(event, context):
     response = client.start_manual_transfer_runs(parent, requested_run_time=start_time)
     print(response)
 ```
-## #7 Its demo time:
+## #8 Its demo time:
 
 Go to the GCS storage and upload the sample CSV file.
 ```csv
