@@ -170,10 +170,10 @@ INSERT
 VALUES
   (name, id) ;
 ```
-**Name** - merge-tbla
-**Repeats** - on-demand
-**Processing location** - US (if need, change it)
-**Advanced** - Select the service account
+* **Name** - merge-tbla
+* **Repeats** - on-demand
+* **Processing location** - US (if need, change it)
+* **Advanced** - Select the service account
 
 {% include lazyload.html image_src="/assets/bq-cf/BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub2.jpg" image_alt="BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub" image_title="BigQuery Data Pipeline Without Any Orchestrator Just CloudFunction And PubSub" %}
 
