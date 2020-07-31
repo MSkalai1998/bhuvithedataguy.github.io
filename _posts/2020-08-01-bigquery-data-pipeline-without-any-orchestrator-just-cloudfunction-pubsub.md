@@ -195,13 +195,12 @@ Replace `parent=f"projects/poc-project"` with your project name.
 
 ```python
 import time
+import base64
+import json
 
 from google.cloud import bigquery_datatransfer_v1
 from google.protobuf.timestamp_pb2 import Timestamp
 
-
-import base64
-import json
 
 def hello_pubsub(event, context):
     pubsub_message = json.loads(base64.b64decode(event['data']).decode('utf-8'))
