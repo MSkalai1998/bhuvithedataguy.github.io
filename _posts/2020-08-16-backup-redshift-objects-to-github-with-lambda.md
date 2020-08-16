@@ -60,6 +60,8 @@ GITHUB_ACCESS_TOKEN
 GITHUB_REPO 
 GITHUB_PREFIX
 ```
+GITHUB_PREFIX example: `mybackup/`
+
 > I recommend to encrypt it with KMS or use Parameter store. If you use KMS then from the lambda function, you may need to make some chnges on the Env variables section (under the #Env variables line).
 Increase the function timeout to 15mins.
 
