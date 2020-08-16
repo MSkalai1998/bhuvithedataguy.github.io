@@ -124,5 +124,6 @@ else:
     repo.create_file(git_file, gitcomment, content, branch="master")
     print(git_file + ' CREATED')
 ```
-Conclusion:
+##Conclusion:
+
 DevOps is chaning the database culture as well. The intension of this blog to keep the RedShift schema or objects on Github and intergrate with your CI/CD pipeline. Consider this blog a kickstart doc and keep improvsing your data pipeline. 
