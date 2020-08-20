@@ -20,7 +20,11 @@ In any MySQL replication or migration, generally, we'll skip the `mysql` databas
 mysql -h SOURCE_DB_IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A -e"SELECT CONCAT('SHOW GRANTS FOR ''',user,'''@''',host,''';') FROM mysql.user WHERE user<>''" | mysql -h IP_ADDRES -u root -p'PASSWORD' --skip-column-names -A | sed 's/$/;/g' > user_grants.sql
 
 -- clean up the password field
+-- If the source is RDS
 sed -i 's/IDENTIFIED BY PASSWORD <secret>//g' user_grants.sql
+
+-- If the source is VM/CloudSQL/or whatever
+sed -i "s/IDENTIFIED[^']*'[^']*//" user_grants.sql
 ```
 
 ## Step #2: Generte create user statement:
@@ -37,6 +41,18 @@ mysql -h source_DB -u root -p'password' --skip-column-names -A mysql -e "SELECT 
 ```bash
 mysql -u target_db_ip -u root -p myqsl < create_user.sql
 mysql -u target_db_ip -u root -p myqsl < user_grants.sql
+```
+
+## Bouns:
+### Credits: [Pankaj]()
+
+If you want to rename a user like change the HOST part, then you can use the following commands.
+
+```bash
+mysql -h source_DB -u root -p'password' --skip-column-names -A mysql -e "SELECT Concat('rename user \'',user,'\'@\'',host,'\' to \'',user,'\'@\'','10.20.4.240\'',';') from mysql.user where user not in ('mysql.session','mysql.sys','debian-sys-maint','root','mysql.infoschema');" > rename_user.sql
+
+mysql -u target_db_ip -u root -p myqsl < rename_user.sql
+
 ```
 
 Again a friendly reminder, keep your DBA with you and do take a backup of the MySQL database. If required you can still use [pt-show-grants and mysqlpump](https://mysqlstepbystep.com/2018/05/14/backing-up-users-and-privileges-in-mysql/) as well.
