@@ -44,7 +44,7 @@ mysql -u target_db_ip -u root -p myqsl < user_grants.sql
 ```
 
 ## Bouns:
-### Credits: [Pankaj]()
+### Credits: [Pankaj](https://www.linkedin.com/in/pankaj-kumar-99164a100/)
 
 If you want to rename a user like change the HOST part, then you can use the following commands.
 
