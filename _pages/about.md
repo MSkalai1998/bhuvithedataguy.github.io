@@ -1,6 +1,6 @@
 ---
 layout: page
-title: about
+title: About Me
 ---
 ### Hello World, I'm Bhuvanesh - aka [The Data Guy](https://thedataguy.in)👋
 [![Website](https://img.shields.io/website?label=TheDataGuy.IN&style=for-the-badge&up_message=UP&url=https%3A%2F%2Fthedataguy.in)](https://thedataguy.in)
@@ -17,10 +17,15 @@ title: about
 
 ### Connect with me:
 
-[<img align="left" alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://thedataguy.in)
-[<img align="left" alt="BhuviTheDataGuy | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/BhuviTheDataGuy)
-[<img align="left" alt="rbhuvanesh | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/rbhuvanesh/)
-[<img align="left" alt="BhuviTheDataGuy | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />](https://medium.com/@BhuviTheDataGuy)
+| [<img align="left" alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://thedataguy.in)                  | [Personal Blog](https://thedataguy.in)         |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| [<img align="left" alt="BhuviTheDataGuy \| Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/BhuviTheDataGuy)  | [Twitter](https://twitter.com/BhuviTheDataGuy) |
+| [<img align="left" alt="rbhuvanesh \| LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/rbhuvanesh/) | [LinkedIn](https://linkedin.com/in/rbhuvanesh) |
+| [<img align="left" alt="BhuviTheDataGuy \| Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />](https://medium.com/@BhuviTheDataGuy)    | [Medium](https://medium.com/@BhuviTheDataGuy)  |
+| [<img align="left" alt="BhuviTheDataGuy \| Github" width="22px" src="https://simpleicons.org/icons/github.svg" />](https://github.com/BhuviTheDataGuy)                          | [Github](https://Github.com/BhuviTheDataGuy)   |
+
+
+
 
 <br />
 
