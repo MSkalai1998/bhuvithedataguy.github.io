@@ -17,13 +17,13 @@ title: About Me
 
 ### Connect with me:
 
-| [<img align="left" alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://thedataguy.in)                  | [Personal Blog](https://thedataguy.in)         |
+|                                                                                                                                                                                 |                                                |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| [<img align="left" alt="BhuviTheDataGuy \| Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/BhuviTheDataGuy)  | [Twitter](https://twitter.com/BhuviTheDataGuy) |
-| [<img align="left" alt="rbhuvanesh \| LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/rbhuvanesh/) | [LinkedIn](https://linkedin.com/in/rbhuvanesh) |
-| [<img align="left" alt="BhuviTheDataGuy \| Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />](https://medium.com/@BhuviTheDataGuy)    | [Medium](https://medium.com/@BhuviTheDataGuy)  |
-| [<img align="left" alt="BhuviTheDataGuy \| Github" width="22px" src="https://simpleicons.org/icons/github.svg" />](https://github.com/BhuviTheDataGuy)                          | [Github](https://Github.com/BhuviTheDataGuy)   |
-
+| [< alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://thedataguy.in)                  | [Personal Blog](https://thedataguy.in)         |
+| [< alt="BhuviTheDataGuy \| Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/BhuviTheDataGuy)  | [Twitter](https://twitter.com/BhuviTheDataGuy) |
+| [< alt="rbhuvanesh \| LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/rbhuvanesh/) | [LinkedIn](https://linkedin.com/in/rbhuvanesh) |
+| [< alt="BhuviTheDataGuy \| Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />](https://medium.com/@BhuviTheDataGuy)    | [Medium](https://medium.com/@BhuviTheDataGuy)  |
+| [< alt="BhuviTheDataGuy \| Github" width="22px" src="https://simpleicons.org/icons/github.svg" />](https://github.com/BhuviTheDataGuy)                          | [Github](https://Github.com/BhuviTheDataGuy)   |
 
 
 
