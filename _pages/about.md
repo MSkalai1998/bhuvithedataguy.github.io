@@ -17,15 +17,15 @@ title: About Me
 
 ### Connect with me:
 
-[<img align="left" alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />]()[Personal Blog](https://thedataguy.in)
+[<img align="left" alt="thedataguy.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />]() - [Personal Blog](https://thedataguy.in)
 
-[<img align="left" alt="BhuviTheDataGuy | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />]()[Twitter](https://twitter.com/BhuviTheDataGuy)
+[<img align="left" alt="BhuviTheDataGuy | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />]() - [Twitter](https://twitter.com/BhuviTheDataGuy)
 
-[<img align="left" alt="rbhuvanesh | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />]()[LinkedIn](https://www.linkedin.com/in/rbhuvanesh/)
+[<img align="left" alt="rbhuvanesh | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />]() - [LinkedIn](https://www.linkedin.com/in/rbhuvanesh/)
 
-[<img align="left" alt="BhuviTheDataGuy | Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />]()[Medium](https://medium.com/@BhuviTheDataGuy)
+[<img align="left" alt="BhuviTheDataGuy | Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />]() - [Medium](https://medium.com/@BhuviTheDataGuy)
 
-[<img align="left" alt="BhuviTheDataGuy | Github" width="22px" src="https://simpleicons.org/icons/github.svg" />]()[Github](https://github.com/BhuviTheDataGuy)
+[<img align="left" alt="BhuviTheDataGuy | Github" width="22px" src="https://simpleicons.org/icons/github.svg" />]() - [Github](https://github.com/BhuviTheDataGuy)
 
 
 <br />
