@@ -17,7 +17,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/assets/Export RedShift System Tables And Views To S3.jpg"
+image: "/assets/Export RedShift System Tables And Views To S3.jpg"
 ---
 **Export or Backup the AWS RedShift System tables to other tables. These exports are happening incrementally.**
 
