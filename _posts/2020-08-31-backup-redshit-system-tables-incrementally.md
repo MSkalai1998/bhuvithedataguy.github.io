@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-08-31 13:30:00 +0530
-title: Backup RedShit System Tables Incrementally
+title: Backup RedShift System Tables Incrementally
 description: Backup or Export the AWS RedShift System tables to other tables. These exports are happening incrementally.
 categories:
 - RedShift
