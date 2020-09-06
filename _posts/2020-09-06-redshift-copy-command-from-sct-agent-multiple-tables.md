@@ -23,6 +23,7 @@ AWS SCT extraction agents will extract the data from various sources to S3/Snowb
 ## Multiple random output folders:
 
 In my case, I had 7 AWS SCT extraction agents. During the export process,  I have selected 40+ tables. Here is the output of the SCT Agent's output from S3.
+![](/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables.jpg)
 
 1. Bucket Name
 2. Folder Name that I gave during the export
