@@ -24,7 +24,7 @@ AWS SCT extraction agents will extract the data from various sources to S3/Snowb
 
 In my case, I had 7 AWS SCT extraction agents. During the export process,  I have selected 40+ tables. Here is the output of the SCT Agent's output from S3.
 
-![](/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables.jpg)
+{% include lazyload.html image_src="/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables.jpg" image_alt="RedShift COPY Command From SCT Agent - Multiple Tables" image_title="BRedShift COPY Command From SCT Agent - Multiple Tables"%}
 
 1. Bucket Name
 2. Folder Name that I gave during the export
@@ -71,7 +71,8 @@ s3://bucket/10tables-export/123abc/456def/678ghi/678ghi.json
 * **Step #3:** Pick the stats file one by one and then extract the `task ID` and `TableName`	
 
 _stats file example:_
-![](/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables1.png)
+
+{% include lazyload.html image_src="/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables1.png" image_alt="RedShift COPY Command From SCT Agent - Multiple Tables" image_title="BRedShift COPY Command From SCT Agent - Multiple Tables"%}
 
 * **Step #4:** Grep the task ID from the file where we saved all the manifest file's path. Now that manifest belongs to the table name that we extracted from step 3.
 * **Step #5:** Put the grep output into a new file. Naming conversion is 	`table_name.unit.mainifest` (we already extracted the table name at step 3).
