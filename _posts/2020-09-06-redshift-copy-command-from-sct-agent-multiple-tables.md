@@ -72,6 +72,7 @@ s3://bucket/10tables-export/123abc/456def/678ghi/678ghi.json
 * **Step #6:** Loop the next stats file and repeat the step 3 and 4.
 
 > At this stage you have all manifest files and they are organized by table wise. 
+
 * **Step #7:** Now Just download these manifest files table by table.
 * **Step #8:** Extract the CSV file path(from the manifest file) and put all the manifest files(belongs to the same tables) CSV file path into a single file.
 * **Step #9:** Generate the COPY command.
