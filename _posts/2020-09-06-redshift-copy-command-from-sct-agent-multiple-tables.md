@@ -69,8 +69,10 @@ s3://bucket/10tables-export/123abc/456def/678ghi/678ghi.json
 **678ghi** is the common string between the manifest file and the stats file.
 
 * **Step #3:** Pick the stats file one by one and then extract the `task ID` and `TableName`	
+
 _stats file example:_
 ![](/assets/redshift/RedShift COPY Command From SCT Agent - Multiple Tables1.png)
+
 * **Step #4:** Grep the task ID from the file where we saved all the manifest file's path. Now that manifest belongs to the table name that we extracted from step 3.
 * **Step #5:** Put the grep output into a new file. Naming conversion is 	`table_name.unit.mainifest` (we already extracted the table name at step 3).
 * **Step #6:** Loop the next stats file and repeat the step 3 and 4.
