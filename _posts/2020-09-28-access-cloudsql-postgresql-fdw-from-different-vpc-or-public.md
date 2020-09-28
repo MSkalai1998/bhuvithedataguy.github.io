@@ -21,7 +21,7 @@ image: "/assets/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Pu
 ---
 Access GCP CloudSQL instances from different VPC or different projects or even through public IP via PostgreSQL FDW(foreign data wrapper).
 
-GCP CloudSQL Postgres started supporting to install Postgres FDW. They introduced this feature after a long time. Its a cool extension to easily query the different databases from the same server or access some small tables(Like lookup tables) on the analytics server. But in CloudSQL there is a glitch. We can't use this extension outside the VPC.(at the time when I writing this post). See the {documentation](https://cloud.google.com/sql/docs/postgres/extensions#postgres_fdw).
+GCP CloudSQL Postgres started supporting to install Postgres FDW. They introduced this feature after a long time. Its a cool extension to easily query the different databases from the same server or access some small tables(Like lookup tables) on the analytics server. But in CloudSQL there is a glitch. We can't use this extension outside the VPC.(at the time when I writing this post). See the [documentation](https://cloud.google.com/sql/docs/postgres/extensions#postgres_fdw).
 
 > Currently, this extension works for two Cloud SQL private IP instances within the same VPC network, or for cross databases within the same instance.
 
