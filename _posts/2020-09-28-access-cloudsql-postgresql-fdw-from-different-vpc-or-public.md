@@ -31,7 +31,7 @@ Recently I had a requirement that we want to access some of the production datab
 
 It is mentioned as the communication will happen within the VPC. In GCP if you peered the CloudSQL with your VPC, by default all the IP addresses from your VPC will be whitelisted to access the CloudSQL. So I wanted to try a small hack with a proxy. 
 
-{% include lazyload.html image_src="/assets/postgres/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public1.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
+{% include lazyload.html image_src="/assets/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public1.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
 
 * Spin up a new VM on the analytics project and attach an external IP.
 * Whitelist the analtics Proxy VM's Public IP on the Production CloudSQL instance's connections.
@@ -61,7 +61,7 @@ apt install socat
 socat TCP-LISTEN:5434,fork TCP:30.30.30.30:5432 
 ```
 Create a firewall rule to allow 5434 port from the IP range of Private secure connection. Connection name `cloudsql-postgres-googleapis-com`.
-{% include lazyload.html image_src="/assets/postgres/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public3.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
+{% include lazyload.html image_src="/assets/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public3.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
 
 Install the FDW extension on the analytic database.
 ```sql
@@ -110,7 +110,7 @@ analytics=> select * from fdtest;
 ```
 ## Recommended approach for more secure access
 
-{% include lazyload.html image_src="/assets/postgres/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public2.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
+{% include lazyload.html image_src="/assets/postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public2.jpg" image_alt="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" image_title="postgres/Access CloudSQL PostgreSQL FDW From Different VPC Or Public" %}
 
 1. In my case, we enabled the public IP connection on the production DB(for some third party API), but if you want to keep everything in private then follow this approach.
 2. Setup VPC peering between your source and destination projects.
