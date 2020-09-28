@@ -103,7 +103,7 @@ SELECT * FROM fdtest;
 Update the row on the production and see the updated row on the analytic server.
 ```sql
 production=>update fdw_test set id =4;
-analytics=> select * from convotest.fdtest;
+analytics=> select * from fdtest;
  id 
 ----
   4
