@@ -43,7 +43,7 @@ We already have 3 CloudSQL instances with Private IP enabled(Before the Shard VP
 ## Private Secure Connection - Error Loading Data:
 
 Then I wanted to check any changes on the VPC side. I checked the VPC's private secure connection. And the Private allocation table is showing the allocated private IP address. Then I switched to `Private connection to services` tab, it was showing Error Loading Data. This made us think that something wrong with the Host project that needs to be fixed. 
-{% include lazyload.html image_src="/assets/gcp/CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role1.jpg" image_alt="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" image_title="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" %}
+{% include lazyload.html image_src="/assets/gcp/CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role1.png" image_alt="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" image_title="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" %}
 
 ## Disable and Enable the Service Networking API:
 
@@ -73,4 +73,4 @@ bindings:
   role: roles/compute.networkAdmin
 ```
 Now when I checked the private connections to the services, CloudSQL and Service Networking APIs are enabled. And for us, nothing destroyed. Everything was up and running.
-{% include lazyload.html image_src="/assets/gcp/CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role2.jpg" image_alt="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" image_title="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" %}
+{% include lazyload.html image_src="/assets/gcp/CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role2.png" image_alt="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" image_title="CloudSQL Shared VPC Private IP And servicenetworking.serviceAgent role" %}
