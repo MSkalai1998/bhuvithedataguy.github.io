@@ -58,7 +58,7 @@ From the error message, we understood that we have to assign this permission to 
 As a last try, I wanted to assign the role to the project. For this, we need to know the account ID of the Host project. You can get it from IAM --> Settings.
 ```bash
 gcloud projects add-iam-policy-binding YOUR_HOST_PROJECT_NAME \
-  --member=serviceAccount:service-HOST_PROJECT_ACCOUNT_ID@service-networking.iam.gserviceaccount.com \
+  --member=serviceAccount:service-HOST_PROJECT_ACCOUNT_NUMBER@service-networking.iam.gserviceaccount.com \
   --role=roles/servicenetworking.serviceAgent
 ```
 After this, all the project owner,editors and network admin's and some Service accounts got updated with the `servicenetworking.serviceAgent` role.
