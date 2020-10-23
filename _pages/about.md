@@ -26,10 +26,43 @@ title: About Me
 [<img align="left" alt="BhuviTheDataGuy | Medium" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/medium.svg" />]() - [Medium](https://medium.com/@BhuviTheDataGuy)
 
 [<img align="left" alt="BhuviTheDataGuy | Github" width="22px" src="https://simpleicons.org/icons/github.svg" />]() - [Github](https://github.com/BhuviTheDataGuy)
-
-
 <br />
 
-### Technologies:
+## Experience
+
+### Associate Tech Lead - Powerupcloud Technologies
+
+**March 2015 - May 2018**
+Helped many customers to move to various cloud platforms like AWS, GCP and Azure. Managed 100+ customer's databases includes MSSQL, MySQL, PostgreSQL, Oracle, MongoDB, CouchBase and etc. My core role was to manage and migrate the infra and the databases.
+
+### Database Architect - Searce Inc
+
+**June 2018 - Present**
+
+Providing solution for the complex data engineering problems. Modernizing the data platform for many customers to migrate the data warehouses, BigData clusters, DataLake to the public cloud platforms.
+
+## Awards:
+
+### Powerup Star - 2016
+
+Top technical contributor to the organization.
+
+### Prodigy Award - 2017
+
+The top tech contributor to the organization.
+
+### Top 50 MySQL Blogger - 2019
+
+Sqlshack made a collection of the most popular MySQL bloggers, including a link to each individual blog. The ranking is based on Alexa global score as of April 25, 2019
+
+### Top AWS APN Ambassador - 2019
+
+AWS gave the recognization as the top AWS APN ambassador for contributing to the AWS community.
+
+### Top AWS APN Ambassador - 2020
+
+Achieve this award 2nd time for the continuous contribution to the AWS community via blogs and opensource tools.
+
+## Technologies I work closely:
 
 ![](/assets/tech.jpg)
