@@ -33,6 +33,7 @@ title: About Me
 ### 🧑🏻‍💻 Associate Tech Lead - Powerupcloud Technologies
 
 **March 2015 - May 2018**
+
 Helped many customers to move to various cloud platforms like AWS, GCP and Azure. Managed 100+ customer's databases includes MSSQL, MySQL, PostgreSQL, Oracle, MongoDB, CouchBase and etc. My core role was to manage and migrate the infra and the databases.
 
 ### 🧑📈 Database Architect - Searce Inc
