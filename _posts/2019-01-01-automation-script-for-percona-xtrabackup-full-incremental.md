@@ -118,3 +118,16 @@ Run this script:
 -   **FULL Backup** -- `./xtrabackup_full_increment_restore.sh full`
 -   **Incremental Backup** -- `./xtrabackup_full_increment_restore.sh incremental`
 -   **Restore** -- `./xtrabackup_full_increment_restore.sh restore`
+
+## Update: 2020-10-24 
+
+**Many folks are asking how it'll handle restore?**
+
+Actually, It'll do 90% of the work. Basically it'll prepare the backup files as a consistent one. The next step is yours. Because if someone is new to MySQL and if they didn't understand this tool properlly, then they might break something. So I didn't add it in my script.(Do it on your own risk 😁 )
+
+```sh
+service mysqld stop
+rm -rf $DATA_DIR/*
+mv $BACKUP_DIR/* $DATA_DIR/
+service mysqld start
+```
