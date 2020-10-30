@@ -38,7 +38,9 @@ So we decided to move the cluster with **Images**(for root volume) and **Snapsho
 * Or these images and snapshots can be shared with the other project with `compute.imageUser` role.
 
 Let's say the current setup is in `projectA` and we need to move it to `ProjectB`. Assign permission to the ProjectB service account from ProjectA. 
+
 > Replace `123123123` with the account ID of ProjectB
+
 ```bash
 -- Run this command on project A 
 gcloud config set project projectA
@@ -53,7 +55,9 @@ We want to take the snapshot and generally, the GCP snapshots are not consistent
 ## Take Image:
 
 For all the root volumes, we'll take Image, so it'll be easy to spin up a new VM from the other project. We can take it without restarting the VM.
+
 > Replace `image-name` with the of the Image, `disk-name-of-root-volume` with the Root disk name and `us-west4-c` with the zone where the source disk is available then `us-west4` the region name where the volume is located. 
+
 ```bash
 gcloud compute images create image-name \
 	--source-disk disk-name-of-root-volume \
@@ -64,7 +68,9 @@ gcloud compute images create image-name \
 ## Take Snapshot:
 
 Now for the data disks, we can take a snapshot. Generally for a large disk needs more time to take a snapshot. But GCP [snapshots are incremental](https://cloud.google.com/compute/docs/disks/create-snapshots) in nature. So we took a snapshot before this activity. And this time it'll take the incremental data only. So it'll be fast. 
+
 > Replace `us-west4` with the region where the volume is located.
+
 ```bash
 gcloud compute disks snapshot data-disk-name \
 	--snapshot-names data-disk-1-mig 
@@ -73,7 +79,9 @@ gcloud compute disks snapshot data-disk-name \
 ## Create Disks from the Snapshots:
 
 Now let's create the Disk from the Source snapshot on ProjectB.
+
 > Replace `prd-es-datadisk` disk name, `pd-ssd` disk type like SSD or PD volume, `us-west4` region for the disk, `us-west4-c` zone for the disk and `projects/projectA/global/snapshots/es-stg-data-newproject-migration` replace projectA with the source project name and `data-disk-1-mig` with the source snapshot name.
+
 ```bash
 gcloud compute disks create prd-es-datadisk \
 	--type pd-ssd \
@@ -100,7 +108,9 @@ That's all, spin up all the Data nodes and master nodes. Wait for the booting pr
 ## ElasticSearch config changes:
 
 The IP addresses are different in the new project, so the cluster will not come online. We have to make the following changes.
+
 > Note: these config settings are from my cluster. You can change as per your cluster config.
+
 ```bash
 node.name: new-vm-name
 network.host: new-vm-ip
@@ -117,7 +127,9 @@ Right now the cluster says the OpenDistro Security Not Initialized for any reque
 Open Distro Security not initialized (SG11).
 ```
 It's due to the network and node name changes. So we have to reinitialize the OpenDisto security settings. Make the sure cluster state should be in **`YELLOW`** not in RED.
+
 > Replace `kirk.pem` and `kirk-key.pem`  with your client certificates. 
+
 ```bash
 /usr/share/elasticsearch/plugins/opendistro_security/tools/securityadmin.sh \
    -cd /usr/share/elasticsearch/plugins/opendistro_security/securityconfig/ \
