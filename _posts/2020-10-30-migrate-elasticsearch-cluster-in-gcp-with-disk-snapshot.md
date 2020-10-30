@@ -80,14 +80,14 @@ gcloud compute disks snapshot data-disk-name \
 
 Now let's create the Disk from the Source snapshot on ProjectB.
 
-> Replace `prd-es-datadisk` disk name, `pd-ssd` disk type like SSD or PD volume, `us-west4` region for the disk, `us-west4-c` zone for the disk and `projects/projectA/global/snapshots/es-stg-data-newproject-migration` replace projectA with the source project name and `data-disk-1-mig` with the source snapshot name.
+> Replace `prd-es-datadisk` disk name, `pd-ssd` disk type like SSD or PD volume, `us-west4` region for the disk, `us-west4-c` zone for the disk and `projects/projectA/global/snapshots/es-stg-data-newproject-migration` replace `projectA` with the source project name and `data-disk-1-mig` with the source snapshot name.
 
 ```bash
 gcloud compute disks create prd-es-datadisk \
 	--type pd-ssd \
 	--region us-west4 \
 	--zone us-west4-c	
-	--source-snapshot projects/project-a/global/snapshots/data-disk-1-mig    
+	--source-snapshot projects/projectA/global/snapshots/data-disk-1-mig    
 ```
 Once it's created, then we are ready to launch the new VM for the Cluster.
 
