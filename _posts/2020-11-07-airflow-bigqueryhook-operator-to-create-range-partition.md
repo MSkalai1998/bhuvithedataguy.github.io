@@ -2,7 +2,7 @@
 layout: post
 date: 2020-11-07 11:30:00 +0530
 title: Airflow BigQueryHook And Operator To Create Range Partition
-description: Airflow BigQuery Operator packed with Time partition parameter. But it doesn't have the parameter for the Range Partition. But alternatively, we can use `table_resource` parameter to create the Range partition.
+description: Airflow BigQuery Operator packed with Time partition parameter. But it doesn't have the parameter for the Range Partition. But alternatively, we can use table_resource parameter to create the Range partition.
 categories:
 - Airflow
 tags:
@@ -24,7 +24,11 @@ If you are already familiar with Airflow bigquery operator or bigquery hook, the
 
 I tried to use the table resource option to create the table with Range partition. Unfortunately, it didn't work as I expected.  It just created the table without any columns and no partitions. Then I started reading more about the table resource's behavior in BigQuery API. 
 
+{% include lazyload.html image_src="/assets/airflow/airflow-bigqueryhook-operator-to-create-range-partition1.png" image_alt="Airflow BigQueryHook And Operator To Create Range Partition" image_title="Airflow BigQueryHook And Operator To Create Range Partition" %}
+
 The table resource is a JSON representation of a BigQuery table, It has all the properties to define a proper table. Then I realized why it didn't create any columns when I tried this very first time. Also, I got help from the Airflow maintainers to understand better this table_resource parameter in BigQueryOperator. 
+
+{% include lazyload.html image_src="/assets/airflow/airflow-bigqueryhook-operator-to-create-range-partition.png" image_alt="Airflow BigQueryHook And Operator To Create Range Partition" image_title="Airflow BigQueryHook And Operator To Create Range Partition" %}
 
 Let's see what the operator is saying about this parameter.
 ```py
