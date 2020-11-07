@@ -28,7 +28,7 @@ I tried to use the table resource option to create the table with Range partitio
 
 The table resource is a JSON representation of a BigQuery table, It has all the properties to define a proper table. Then I realized why it didn't create any columns when I tried this very first time. Also, I got help from the Airflow maintainers to understand better this table_resource parameter in BigQueryOperator. 
 
-{% include lazyload.html image_src="/assets/airflow/airflow-bigqueryhook-operator-to-create-range-partition.png" image_alt="Airflow BigQueryHook And Operator To Create Range Partition" image_title="Airflow BigQueryHook And Operator To Create Range Partition" %}
+{% include lazyload.html image_src="/assets/airflow/airflow-bigqueryhook-operator-to-create-range-partition.jpg" image_alt="Airflow BigQueryHook And Operator To Create Range Partition" image_title="Airflow BigQueryHook And Operator To Create Range Partition" %}
 
 Let's see what the operator is saying about this parameter.
 ```py
