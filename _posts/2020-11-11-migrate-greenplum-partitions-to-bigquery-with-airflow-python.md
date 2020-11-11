@@ -28,8 +28,8 @@ We have many airflow operators to help migrate or sync the data to Google BigQue
 
 Greenplum supports two different partitions.
 
-* range partitioning: division of data based on a numerical range, such as date or price.
-* list partitioning: division of data based on a list of values, such as sales territory or product line.
+* **range partitioning:** division of data based on a numerical range, such as date or price.
+* **list partitioning:** division of data based on a list of values, such as sales territory or product line.
 * Also, we use a combination of both types.
 
 You can use [pg_partitions](http://docs.greenplum.org/5140/ref_guide/system_catalogs/pg_partitions.html) system table to see the detailed view of the table partitions.
@@ -38,9 +38,9 @@ You can use [pg_partitions](http://docs.greenplum.org/5140/ref_guide/system_cata
 
 BigQuery supports 3 different types of partitions.
 
-* Ingestion time: Tables are partitioned based on the data's ingestion (load) time or arrival time.
-* Date/timestamp/datetime: Tables are partitioned based on a TIMESTAMP, DATE, or DATETIME column.
-* Integer range: Tables are partitioned based on an integer column.
+* **Ingestion time:** Tables are partitioned based on the data's ingestion (load) time or arrival time.
+* **Date/timestamp/datetime:** Tables are partitioned based on a TIMESTAMP, DATE, or DATETIME column.
+* **Integer range:** Tables are partitioned based on an integer column.
 
 If you compare the BigQuery partition capability with Greenplum, all the BigQuery partitions are equivalent to the Range partition in Greenplum. 
 
