@@ -70,6 +70,8 @@ Now we have to extract each column and its data type for the given table, then w
 
 In airflow Bigquery hook, [it won't support the Range partition as a parameter, but we can use table_resource to pass the whole table's properties](https://thedataguy.in/airflow-bigqueryhook-operator-to-create-range-partition/).  So the next step is to consolidate all the partition information and generate the JSON format. Here we are combining the schema and the partition details, then it'll be passed as the `table_resource` in the BigQuery API.
 
+{% include lazyload.html image_src="/assets/airflow/Migrate Greenplum Partitions To BigQuery With Airflow Python2.png" image_alt="Migrate Greenplum Partitions To BigQuery With Airflow Python" image_title="Migrate Greenplum Partitions To BigQuery With Airflow Python" %}
+
 ## Create the table via BigQueryHook:
 
 And we are going to use the BigQuery Hook (from the backport providers) to create the empty table using the table resource. If you are using an older version of Airflow(libraries from `airflow.contrib` then the hook doesn't support the table_resource option). 
