@@ -4,9 +4,36 @@ layout: default
 
 <section class="post">
   <h1>{{ page.title }}</h1>
-  <code>
-  	{% include ads-vertical.html %}
-  </code>
+<script>
+	   .rotated {
+        writing-mode: tb-rl;
+        transform: rotate(-180deg);
+        font-family: monospace;
+    }
+ pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1;
+    margin-bottom: 1em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1em;
+    display: block;
+    word-wrap: break-word;
+    letter-spacing: 1.5px;
+}
+</script>
+<pre class="brush: css notranslate">
+<div class="rotated">Advertisement</div>
+{% include ads-vertical.html %}
+</pre>
+
+
   {{ content }}
       
 
