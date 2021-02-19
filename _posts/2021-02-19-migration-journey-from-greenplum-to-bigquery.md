@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 date: 2021-02-19 17:30:00 +0530
 title: Migration Journey From GreenPlum To BigQuery
