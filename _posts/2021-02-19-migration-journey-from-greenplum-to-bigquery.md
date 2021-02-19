@@ -17,7 +17,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/airflow/airflow.png"
+image: "/assets/architecture/migrate-gp-to-bq-onprem-architecture.jpg"
 ---
 **The story behind the migration from Greenplum data warehouse to Google BigQuery. Written about the migration steps, assessments, data export, common challenges and its solution.** 
  
