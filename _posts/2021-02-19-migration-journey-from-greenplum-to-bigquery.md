@@ -50,33 +50,33 @@ Im not going to write about the BigQuery here, everyone knows this Beast. But a 
 
 ## Solution Overview:
 
-* Assess migration tasks
-    * Understand the scope
-    * Identify the objects for the migration
-* Setup migration environment
-    * A VM with client tools to access the Greenplum server and script the entire migration
-* Migrate - Dev environment
-    * Convert the schema (tables)
-    * Create tables on BigQuery
-    * Convert any UDF or Procedure
-    * Export historical data to Google Cloud Storage and import into BigQuery
-    * Export incremental Data and Catch up with Greenplum
-    * Migrate the Shell Scripts to Airflow DAGs for data pipeline
-    * Validate data
-    * Business validation (including optional dual-running)
-    * Implement monitoring
-    * Cutover
-* Migrate - PROD environment
-    * Convert the schema (tables)
-    * Create tables on BigQuery
-    * Convert any UDF or Procedure
-    * Export historical data to Google Cloud Storage and import into BigQuery
-    * Export incremental Data and Catch up with Greenplum
-    * Migrate the Shell Scripts to Airflow DAGs for data pipeline
-    * Validate data
-    * Business validation (including optional dual-running)
-    * Implement monitoring
-    * Cutover
+**Assess migration tasks**
+* Understand the scope
+* Identify the objects for the migration
+**Setup migration environment**
+* A VM with client tools to access the Greenplum server and script the entire migration
+**Migrate - Dev environment**
+* Convert the schema (tables)
+* Create tables on BigQuery
+* Convert any UDF or Procedure
+* Export historical data to Google Cloud Storage and import into BigQuery
+* Export incremental Data and Catch up with Greenplum
+* Migrate the Shell Scripts to Airflow DAGs for data pipeline
+* Validate data
+* Business validation (including optional dual-running)
+* Implement monitoring
+* Cutover
+**Migrate - PROD environment**
+* Convert the schema (tables)
+* Create tables on BigQuery
+* Convert any UDF or Procedure
+* Export historical data to Google Cloud Storage and import into BigQuery
+* Export incremental Data and Catch up with Greenplum
+* Migrate the Shell Scripts to Airflow DAGs for data pipeline
+* Validate data
+* Business validation (including optional dual-running)
+* Implement monitoring
+* Cutover
 
 ## Assessment:
 
@@ -100,61 +100,8 @@ This is the most important part, if we didn't use the proper data type or partit
 
 We created a python function to extract the tables, columns, and their data type from the `information_schema` and map the BigQuery equivalent data type. Then it'll generate the [BigQuery schema file](https://cloud.google.com/bigquery/docs/schemas#specifying_a_json_schema_file). 
 
-```py
-# This function is from the Airflow DAG
-# If you are running without airflow, then get pass this 
-# function output to create BQ table function(that you need to create)
-def get_pgschema():
-    table_schema = 'myschema'
-    table_name = 'mytable'
-    sql="""
-        with cte as (
-        select
-            '{{"mode": "'
-            || case when is_nullable = 'YES' then 'NULLABLE'
-            else 'REQUIRED'
-        end || '", "name": "' || column_name || '", "type": "'
-        || case when data_type = 'bigint' then 'INT64'
-        when data_type = 'bigserial' then 'INT64'
-        when data_type = 'bit' then 'INT64'
-        when data_type = 'bit varying' then 'INT64'
-        when data_type = 'boolean' then 'BOOL'
-        when data_type = 'bytea' then 'BYTEA'
-        when data_type = 'character' then 'STRING'
-        when data_type = 'character varying' then 'STRING'
-        when data_type = 'date' then 'DATE'
-        when data_type = 'decimal' then 'FLOAT64'
-        when data_type = 'double precision' then 'FLOAT64'
-        when data_type = 'integer' then 'INT64'
-        when data_type = 'money' then 'FLOAT64'
-        when data_type = 'real' then 'FLOAT64'
-        when data_type = 'serial' then 'INT64'
-        when data_type = 'smallint' then 'INT64'
-        when data_type = 'text' then 'STRING'
-        when data_type = 'time without time zone' then 'TIME'
-        when data_type = 'time with time zone' then 'STRING'
-        when data_type = 'timestamp without time zone' then 'DATETIME'
-        when data_type = 'timestamp withtime zone' then 'TIMESTAMP'
-        when data_type = 'uuid' then 'STRING'
-        when data_type = 'numeric' then 'FLOAT64'
-        else 'STRING'
-        end || '"}}' as type
-        from
-        information_schema.columns
-        where
-        table_schema = '{}'
-        and table_name = '{}'
-        order by
-        ordinal_position asc)
-        select
-            '[' || string_agg(type, ', ')|| ']' as schema
-        from
-            cte;
-    """.format(table_schema,table_name)
-    postgres_hook = PostgresHook(postgres_conn_id=pg_conn)
-    records = postgres_hook.get_records(sql=sql)
-    return records
-```
+<script src="https://gist.github.com/BhuviTheDataGuy/2103b0a6177c62718fe91095a40e3e33.js"></script>
+
 The complete airflow dag is [available here](https://github.com/BhuviTheDataGuy/opencode/blob/main/airflow/dags/greenplum_ddl_migrate_bigquery.py)
 
 > Note: The data types are mapped with almost correct BQ data type, if you want to change, then you can change it. Some data types won't support BQ, so it'll convert them to `STRING`.
