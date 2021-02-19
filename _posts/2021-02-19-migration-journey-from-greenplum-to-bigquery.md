@@ -77,6 +77,7 @@ Im not going to write about the BigQuery here, everyone knows this Beast. But a 
 
 ## Assessment:
 For the initial few days, we spent most of your time on the assessment part to understand better the current system(`table structure, and process`). Here are our Assessment categories. 
+
 {% include lazyload.html image_src="/assets/architecture/migrate-gp-to-bq-assessment.jpg" image_alt="assessment" image_title="assessment" %}
 
 The assessment scripts(for Greenplum) are available in my [GitHub Repo](https://github.com/BhuviTheDataGuy/sqladmin/blob/main/greenplum/assessment.md)
@@ -180,6 +181,7 @@ The reason why we had to use the on-prem server to export the data is to reduce 
 {% include lazyload.html image_src="/assets/graph/migrate-gp-to-bq-gcp-export.jpg" image_alt="gcp-export" image_title="gcp-export" %}
 
 Due to VPN latency, the export from GP took more time, but overall it reduced the time by 1.5Hr.
+
 {% include lazyload.html image_src="/assets/graph/migrate-gp-to-bq-export-comparison.jpg" image_alt="export-comparison" image_title="export-comparison" %}
 
 ### Problem #2 CSV files are large in size
@@ -387,6 +389,7 @@ This helped us to reduce the billing.
 
 ### Problem #7 Partition limitation
 For the large tables, we did the partition on a timestamp column and the partition type was `DAY`.  Throughout the day the pipeline was running fine but some batch jobs on the source database made the update on millions of rows for a table. It hits the partition limitation.
+
 [https://cloud.google.com/bigquery/quotas#partitioned_tables](https://cloud.google.com/bigquery/quotas#partitioned_tables)
 
 ```bash
