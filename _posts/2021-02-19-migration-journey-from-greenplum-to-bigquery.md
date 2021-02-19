@@ -53,8 +53,10 @@ Im not going to write about the BigQuery here, everyone knows this Beast. But a 
 **Assess migration tasks**
 * Understand the scope
 * Identify the objects for the migration
+
 **Setup migration environment**
 * A VM with client tools to access the Greenplum server and script the entire migration
+
 **Migrate - Dev environment**
 * Convert the schema (tables)
 * Create tables on BigQuery
@@ -66,6 +68,7 @@ Im not going to write about the BigQuery here, everyone knows this Beast. But a 
 * Business validation (including optional dual-running)
 * Implement monitoring
 * Cutover
+
 **Migrate - PROD environment**
 * Convert the schema (tables)
 * Create tables on BigQuery
