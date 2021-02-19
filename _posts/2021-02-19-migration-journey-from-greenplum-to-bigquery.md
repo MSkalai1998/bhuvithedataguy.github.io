@@ -205,7 +205,7 @@ psql -U bhuvanesh -h YOUR_GP_IP -d database  -c "COPY (SELECT * FROM myschema.ta
 ```
 
 > Note: While using the split command, don't mention the file size, because it'll break a single row into two different files. 
-[Here is my full script](#link) for extracting the table for the last 3 years month-wise and upload it to GCS.
+[Here is my full script](https://thedataguy.in) for extracting the table for the last 3 years month-wise and upload it to GCS.
 
 ### Problem #3 JSON Data
 
