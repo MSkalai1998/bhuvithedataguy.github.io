@@ -50,6 +50,8 @@ Im not going to write about the BigQuery here, everyone knows this Beast. But a 
 
 ## Solution Overview:
 
+{% include lazyload.html image_src="/assets/architecture/migrate-gp-to-bq-solution.jpg" image_alt="solution" image_title="solution" %}
+
 **Assess migration tasks**
 * Understand the scope
 * Identify the objects for the migration
@@ -154,8 +156,11 @@ Finally, I decided to go with the shell script to extract the data and split the
 psql -U bhuvanesh -h YOUR_GP_IP -d database  -c "COPY (SELECT * FROM myschema.table ) TO stdout WITH  DELIMITER '|' CSV ;" | split  -a3 -dl 1000000 --filter='gzip > $FILE.gz' - /export/data/table/table.csv_
 ```
 
-> Note: While using the split command, don't mention the file size, because it'll break a single row into two different files. 
-[Here is my full script](https://thedataguy.in) for extracting the table for the last 3 years month-wise and upload it to GCS.
+> Note: While using the split command, don't mention the file size, because it'll break a single row into two different files.
+
+Here is my full script for extracting the table for the last 4 years month-wise and upload it to GCS.
+
+<script src="https://gist.github.com/BhuviTheDataGuy/40958c60a987abea93e1f2839ed1e16d.js"></script>
 
 ### Problem #3 JSON Data
 
