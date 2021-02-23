@@ -323,7 +323,7 @@ We let the shell script sync the data to Greenplum and deployed the Airflow for 
 
 ### Problem #5 BigQuery Merge
 
-The existing pipeline for the incremental sync did the `DELETE + INSERT` based on the primary key column. Initially, we tried the same approach with the merge statement for the small tables and it worked. But when we checked this on the super large tables(**just only 1 try**) where some tables are in 3TB, 2TB, it affects the execution time(it took a bit longer than expected). BigQuery is a columnar format storage system and update means it should talk to all the columns irrespective of how many rows that you are updating. So every 2mins, if we read 3TB of the data then think about the cost, it'll be too much and it's a bad solution. 
+The existing pipeline for the incremental sync did the `DELETE + INSERT` based on the primary key column. Initially, we tried the same approach with the merge statement for the small tables and it worked. But when we checked this on the super large tables(**just only 1 try**) where some tables are in 3TB, 2TB, it affects the execution time(it took a bit longer than expected). BigQuery is a columnar format storage system and MERGE means it should talk to all the columns irrespective of how many rows that you are updating. So every 2mins, if we read 3TB of the data then think about the cost, it'll be too much and it's a bad solution. 
 
 **Solution**
 
