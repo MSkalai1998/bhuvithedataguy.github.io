@@ -27,7 +27,13 @@ image: "/assets/architecture/migrate-gp-to-bq-onprem-architecture.jpg"
 
 {% include lazyload.html image_src="/assets/architecture/migrate-gp-to-bq-onprem-architecture.jpg" image_alt="On-Prem Architecture" image_title="On-Prem Architecture" %}
 
-The customer had a single giant Greenplum server which is their main data warehouse. They were collecting the data from 10+ PostgreSQL servers and push it into the Greenplum with near real-time sync. The data sync job had been written in shell scripts and deployed on a dedicated `cron server`.  Some of the tables were huge and they did partition on an integer column. The total uncompressed size of the Greenplum database is 15TB. A java based reporting tool developed by the customer was used for visualizing. An opensource tool(forgot the name) used to schedule the reports - A flat file will be sent via email.
+* The customer had a single giant Greenplum server which is their main data warehouse. 
+* They were collecting the data from 10+ PostgreSQL servers and push it into the Greenplum with near real-time sync. 
+* The data sync job had been written in shell scripts and deployed on a dedicated `cron server`.  
+* Some of the tables were huge and they did partition on an integer column. 
+* The total uncompressed size of the Greenplum database is 15TB. 
+* A java based reporting tool developed by the customer was used for visualizing. 
+* An opensource tool(forgot the name) used to schedule the reports - A flat file will be sent via email.
 
 ## Pain with the Greenplum:
 
