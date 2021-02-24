@@ -255,7 +255,7 @@ chunk=1
 while read -r i
 do
 
-psql -U bhuvanesh -h YOUR_GP_IP -d database  -c "COPY (SELECT * FROM myschema.table WHERE id between $i  ) TO '/export/data/mytable/file_$i.csv' WITH  DELIMITER '|' CSV  FORCE QUOTE col1,col2,col3;" 
+psql -U bhuvanesh -h YOUR_GP_IP -d database  -c "COPY (SELECT * FROM myschema.table WHERE id between $i  ) TO '/export/data/mytable/file_$chunk.csv' WITH  DELIMITER '|' CSV  FORCE QUOTE col1,col2,col3;" 
 
 # Export to GCS
 gsutil -m rsync /export/data/mytable/ gs://export/prod-data/mytable/
