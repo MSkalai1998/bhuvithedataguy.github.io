@@ -16,7 +16,7 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/architecture/migrate-gp-to-bq-onprem-architecture.jpg"
+image: "/assets/aws/AWS Glue DataBrew To Remove Any Sensitive And PII_12.jpg"
 ---
 AWS Glue DataBrew is a serverless service that helps data engineers to cleanse and format their RAW data without writing any single line of code. It's announced just before reinvent 2020. It has 250+ build-in transformations which reduce the overall efforts for the transformation. In this post, I'll show you how can we use this DataBrew to remove any PII and other sensitive information from the dataset. 
 
