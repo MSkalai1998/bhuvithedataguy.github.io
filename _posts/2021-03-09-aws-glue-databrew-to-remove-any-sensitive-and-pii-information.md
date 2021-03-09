@@ -37,7 +37,7 @@ AWS Glue DataBrew is a serverless service that helps data engineers to cleanse a
 
 ### Transformations:
 
-* Mock the mail ID with `dummy_main` before the `@` symbol and keep the domain name.
+* Mock the mail ID with `dummy_mail` before the `@` symbol and keep the domain name.
 * Mock the first 6 digits of the phone numbers with `123-123`.
 * Keep only the last 4 digits of the CARD number and remove the rest of the numbers from the beginning.
 * Rename the email and phone number column with `mock_email` and `mock_phone`. 
