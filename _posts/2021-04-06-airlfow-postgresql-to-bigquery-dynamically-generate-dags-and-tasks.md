@@ -183,3 +183,5 @@ Im going to generate the tasks based on this JSON KEY. So if we have the same sc
 * `schema_object` - JSON schema file for the table.
  
 <script src="https://gist.github.com/BhuviTheDataGuy/51ced72b30699d9b15d9355f68c1d7a2.js"></script>
+
+You can find the complete [code base here](https://github.com/BhuviTheDataGuy/opencode/tree/main/airflow/dynamic-dag-generator), if you have any clear details, find it in the example codebase. 
