@@ -30,23 +30,32 @@ I have 10+ PostgreSQL database servers and I need to sync some of its tables to 
 ## Pre-Configurations: 
 
 Im following some strict naming conversion for everything. 
-* I have 10+ sources right? So I have the connections on the Airflow with the following conversion.
+
+I have 10+ sources right? So I have the connections on the Airflow with the following conversion.
 ```
 <env>_<db_engine>_<ip_address>_<dbname>
-
 eg:
 prod_postgres_10.10.10.11_platformdb
+
 ```
-* We can have the naming conversion till IP address, but I had some issues while generating the dynamic tasks, so multiple tasks will get the same task name. 
-* Extracting is not a straightforward one, I had some custom logic to extract the data. So every time, I need to run a specific query for each table and that result will go to BQ. So I created SQL files for every table with the proper SQL select query. And that naming conversion as follows,
+
+We can have the naming conversion till IP address, but I had some issues while generating the dynamic tasks, so multiple tasks will get the same task name. 
+
+Extracting is not a straightforward one, I had some custom logic to extract the data. So every time, I need to run a specific query for each table and that result will go to BQ. So I created SQL files for every table with the proper SQL select query. And that naming conversion as follows,
+
 ```
 <source_export>_<schema_name>_<table_name>_<airflow_conn_name_for_that_database_server>.sql
 eg:
 source_export_transactions_paiddata_prod_postgres_10.10.10.11_platformdb.sql
 ```
-* These naming conversions will help to dynamically select the SQL files. You'll get to know once you see the config file.
-* Finally, the JSON schema file - BQ load from the API must need a JSON schema file to load the data into the table, So I have generated such schema files with the following naming conversion.
+
+These naming conversions will help to dynamically select the SQL files. You'll get to know once you see the config file.
+
+Finally, the JSON schema file - BQ load from the API must need a JSON schema file to load the data into the table, So I have generated such schema files with the following naming conversion.
+
+```
 <schema_name>_<table_name>.json
+```
 
 ## Meta Table:
 
@@ -55,6 +64,7 @@ In my case, I want to maintain everything on the GCP side, the source databases 
 > Note: Make sure the value for the datasource_dbconn must be your Airflow connection id. Because the naming conversion will play a major role here. 
 
 Here is the table DDL.
+
 ```sql
 -- databaseid and datasource_dbconn is used in our use case
 -- you can skip those columns
