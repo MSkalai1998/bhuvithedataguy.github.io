@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2021-04-06 12:45:00 +0530
-title: Airlfow PostgreSQL to BigQuery Dynamically Generate DAGs and Tasks
+title: Airflow PostgreSQL to BigQuery Dynamically Generate DAGs and Tasks
 description: Airlfow PostgreSQL to BigQuery Dynamically Generate DAGs and Tasks using a JSON config with different sync interval. 
 categories:
 - Airflow
