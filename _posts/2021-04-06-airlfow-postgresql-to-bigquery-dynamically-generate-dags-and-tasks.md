@@ -17,7 +17,7 @@ social:
     - https://github.com/BhuviTheDataGuy
 image: "/assets/airflow/Apache-Airflow.jpeg"
 ---
-Airflow is now a handy tool for almost all data engineers. If you have a common strategy for the data sync for many data sources, then we can just pass the sources via a loop and it'll reuse the whole pipeline for everything. Most of you might already know about how to generate the Tasks dynamically. But in this post, Im going to share, how do we dynamically generate the DAGs as well as Tasks in Airflow.
+Airflow is now a handy tool for almost all data engineers. If you have a common strategy for the data sync for many data sources, then we can just pass the sources via a loop and it'll reuse the whole pipeline for everything. Most of you might already know about how to generate the Tasks dynamically. But in this post, Im going to share, how do we dynamically generate the DAGs as well as Tasks in Airflow alo it'll generate the dag for different sync interval.
 
 ## JSON config file:
 
