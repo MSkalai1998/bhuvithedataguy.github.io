@@ -17,7 +17,6 @@ social:
     - https://github.com/BhuviTheDataGuy
 image: "/assets/aws/Integrate Debezium And Sink connecters With AWS Glue Schema Registry.jpeg"
 ---
-Integrate Debezium And Sink connectors With AWS Glue Schema Registry
 AWS Glue Schema Registry is providing the schema registry for streaming platforms like Kafka, AWS MSK, Kinesis and etc. If you are on the AWS ecosystem and planning to build something like a DataLake or LakeHouse, then a centralized repository for your schema registry is very important and it'll simplify the whole process by having a single point of contact. Even I had a similar scenario where I need to integrate the Debezium connecter with the AWS schema registry. We are planning to leverage LakeHouse, DataLake, and maybe DataMesh in the future. So we would like to have a single repo for the schema registry that will fit into the AWS ecosystem. As a part of this, we wanted to add Debezium with the Glue Schema Registry.  
 
 > NOTE: AWS documentation has a section for the Kafka connect integration, but those steps are not working, and if you are a newbie to Kafka, then it may be difficult to understand that. 
