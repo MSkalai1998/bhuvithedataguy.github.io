@@ -26,6 +26,8 @@ AWS Glue Schema Registry is providing the schema registry for streaming platform
 
 AWS schema registry doesn't natively support by any other Kafka connect. We have to add the AWS Schema Registry libraries to the Kafka workers and then add the properties to the respective connecters. This library is completely opensource and provides support for storing the schema in Avro, JSON, and Protopuf format. 
 
+{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink Connecters With AWS Glue Schema Registry.jpeg" image_alt="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" %}
+
 Let's do the integration by compiling the AWS schema registry library.  Make sure you have Java version 1.8 or later.
 
 ```sh
