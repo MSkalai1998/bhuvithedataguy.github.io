@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2021-08-03 23:50:00 +0530
-title: Integrate Debezium And Sink Connecters With AWS Glue Schema Registry
-description: Integrate Debezium and kafka sink connecters with AWS Glue Schema Registry. We can use Avro and Json formats to store the schema.
+title: Integrate Debezium And Sink Connectors With AWS Glue Schema Registry
+description: Integrate Debezium and kafka sink connectors with AWS Glue Schema Registry. We can use Avro and Json formats to store the schema.
 categories:
 - Airflow
 tags:
@@ -15,18 +15,18 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/aws/Integrate Debezium And Sink Connecters With AWS Glue Schema Registry.jpeg"
+image: "/assets/aws/Integrate Debezium And Sink connecters With AWS Glue Schema Registry.jpeg"
 ---
-Integrate Debezium And Sink Connecters With AWS Glue Schema Registry
+Integrate Debezium And Sink connectors With AWS Glue Schema Registry
 AWS Glue Schema Registry is providing the schema registry for streaming platforms like Kafka, AWS MSK, Kinesis and etc. If you are on the AWS ecosystem and planning to build something like a DataLake or LakeHouse, then a centralized repository for your schema registry is very important and it'll simplify the whole process by having a single point of contact. Even I had a similar scenario where I need to integrate the Debezium connecter with the AWS schema registry. We are planning to leverage LakeHouse, DataLake, and maybe DataMesh in the future. So we would like to have a single repo for the schema registry that will fit into the AWS ecosystem. As a part of this, we wanted to add Debezium with the Glue Schema Registry.  
 
 > NOTE: AWS documentation has a section for the Kafka connect integration, but those steps are not working, and if you are a newbie to Kafka, then it may be difficult to understand that. 
 
 ## Integration:
 
-AWS schema registry doesn't natively support by any other Kafka connect. We have to add the AWS Schema Registry libraries to the Kafka workers and then add the properties to the respective connecters. This library is completely opensource and provides support for storing the schema in Avro, JSON, and Protopuf format. 
+AWS schema registry doesn't natively support by any other Kafka connect. We have to add the AWS Schema Registry libraries to the Kafka workers and then add the properties to the respective connectors. This library is completely opensource and provides support for storing the schema in Avro, JSON, and Protopuf format. 
 
-{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink Connecters With AWS Glue Schema Registry.jpeg" image_alt="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" %}
+{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink connecters With AWS Glue Schema Registry.jpeg" image_alt="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" %}
 
 Let's do the integration by compiling the AWS schema registry library.  Make sure you have Java version 1.8 or later.
 
@@ -45,7 +45,7 @@ plugin.path=/usr/share/java,/usr/share/confluent-hub-components,/opt/aws-glue-sc
 
 ## Pre-Requisites:
 
-* The debezium connecters are running on EC2 instances, so to connect with the AWS Schema registry, the lib can use the Instance Role. So we need an EC2 IAM Role with the following permissions Or simply add the `AWSGlueSchemaRegistryFullAccess` policy.
+* The debezium connectors are running on EC2 instances, so to connect with the AWS Schema registry, the lib can use the Instance Role. So we need an EC2 IAM Role with the following permissions Or simply add the `AWSGlueSchemaRegistryFullAccess` policy.
 
 > Replace `XXX_AWS_ACC_NO_XXX` with your AWS account number.
 
@@ -143,13 +143,13 @@ Now, let's create a Debezium connecter config file with the following properties
 
 ### Deploy the connecter:
 ```sh
-curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" http://localhost:8083/connecters -d @mysql-config.json
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" http://localhost:8083/connectors -d @mysql-config.json
 ```
 
 ### Checking the status:
 
 ```sh
-curl GET localhost:8083/connecters/mysql-connecter-01/status | jq
+curl GET localhost:8083/connectors/mysql-connecter-01/status | jq
 
 {
   "name": "mysql-connecter-01",
@@ -172,7 +172,7 @@ curl GET localhost:8083/connecters/mysql-connecter-01/status | jq
 
 Now we can go to the Glue schema registry, and under the schema's we can see the schema for all the Kafka topics created by the Debezium(except the schema changes topic - which is not required)
 
-{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink Connecters With AWS Glue Schema Registry-1.jpg" image_alt="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" %}
+{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink connecters With AWS Glue Schema Registry-1.jpg" image_alt="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" %}
 
 ## Using JSON Format:
 
@@ -195,7 +195,7 @@ We can use the same connecter config file to write the schema into the Glue sche
 "key.converter.registry.name": "bhuvi-debezium",
 "value.converter.registry.name": "bhuvi-debezium",
 ```
-## Sink Connecters:
+## Sink connectors:
 
 Now if you want to consume the data from the kafka and want to use the AWS Glue schema registry to get the schema, then the process is the same as the debezium config. In this blog, Im using the S3 Sink connecter to get the schema from the AWS glue schema registry(The schema from the producer side created with Avro format).
 
@@ -259,7 +259,7 @@ If you want to read the JSON Format from Glue, then use the following configurat
 "key.converter.registry.name": "bhuvi-debezium",
 "value.converter.registry.name": "bhuvi-debezium",
 ```
-{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink Connecters With AWS Glue Schema Registry-2.jpg" image_alt="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink Connecters With AWS Glue Schema Registry" %}
+{% include lazyload.html image_src="/assets/aws/Integrate Debezium And Sink connecters With AWS Glue Schema Registry-2.jpg" image_alt="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" image_title="Integrate Debezium And Sink connectors With AWS Glue Schema Registry" %}
 
 ## Things to remember: 
 
