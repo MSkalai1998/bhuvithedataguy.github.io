@@ -4,11 +4,13 @@ date: 2021-08-03 23:50:00 +0530
 title: Integrate Debezium And Sink Connectors With AWS Glue Schema Registry
 description: Integrate Debezium and kafka sink connectors with AWS Glue Schema Registry. We can use Avro and Json formats to store the schema.
 categories:
-- Airflow
+- AWS
 tags:
-- gcp
-- bigquery
-- postgresql
+- aws
+- kafka
+- debezium
+- glue
+- schema registry
 social:
   name: Bhuvanesh
   links:
@@ -264,4 +266,4 @@ If you want to read the JSON Format from Glue, then use the following configurat
 
 * Here Im using the `key.converter` as `StringConverter`. I tried to use Avo and JSON directly there, but it was giving some errors and creating the schema 2 times. 1st with the Key and 2nd time with the value(Kafka records are in the key-value pair format). 
 * If you already deployed a connecter and using the Avro format, then re-deploy the connecter with JSON format will give the error, so you need to delete the Schema from the schema registry.
-
+* You can do more customizations like setting a description, buffer, TTL to cache the schema in the connector and etc. You can get all those flags [Here](https://github.com/awslabs/aws-glue-schema-registry/blob/master/common/src/main/java/com/amazonaws/services/schemaregistry/utils/AWSSchemaRegistryConstants.java#L20)
