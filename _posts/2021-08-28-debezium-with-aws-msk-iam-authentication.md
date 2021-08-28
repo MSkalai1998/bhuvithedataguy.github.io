@@ -260,12 +260,14 @@ Lets talk about some issues I faced.
 1. Initially, I was using t3.small. So I used a very larger value for `reconnect.backoff.ms` But it didn't work for me, Then I increased the cluster to m5. After that, it was fixed. Then again I scale down to t3. This time I didn't get that `Too many connects` error. I don't why after scale down it didn't occur. 
 
 2. In the worker properties file, I didn't add the `producer.ssl*` and `consumer.ssl*`. It'll not work, so it has to return errors while deploying debzium or sink connectors. But status is showing running and the kafka connect logs returned some errors like disconnected.
+
 ```bash
 Aug 26 14:54:16 ip-172-30-32-13 connect-distributed: [2021-08-26 14:54:16,708] WARN [debezium-s3-sink-db01|task-0] [Consumer clientId=connector-consumer-debezium-s3-sink-db01-0, groupId=connect-debezium-s3-sink-db01] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 
 Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] WARN [mysql-connector-02|task-0] [Producer clientId=connector-producer-mysql-connector-02-0] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 ```
 3. We added the `producer.ssl*` and `consumer.ssl*` to the worker properties file, but in the debezium connector JSON file, I tried without adding the `database.history.producer.*` and `database.history.consumer.*` properties. After the deployment, the connector was running but nothing gets produced. But the log was showing,
+
 ```bash
 Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] WARN [mysql-connector-02|task-0] [Producer clientId=connector-producer-mysql-connector-02-0] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 ```
@@ -278,6 +280,7 @@ Because all the sink connectors will use a dedicated consumer group that is name
 "arn:aws:kafka:REGION:ACCOUNT_ID:group/CLUSTER_NAME/CLUSTER_UUID/connect-debezium*"
 ```
 5. I tried to delete a topic using 2 methods. 1st one with --bootstap flag and the other one with --zookeeper.
+
 ```bash
 kafka-topics \ 
 --bootstrap-server b-1.kafka.ap-south-1.amazonaws.com:9098,b-2.kafka.ap-south-1.amazonaws.com:9098 \ 
