@@ -17,13 +17,13 @@ social:
     - https://twitter.com/BhuviTheDataGuy
     - https://www.linkedin.com/in/rbhuvanesh
     - https://github.com/BhuviTheDataGuy
-image: "/assets/aws/Debezium With AWS MSK IAM Authentication.jpeg"
+image: "/assets/aws/Debezium With AWS MSK IAM Authentication.jpg"
 ---
 AWS MSK now supports Kafka ACL via IAM permissions. You can assign that permission to an IAM user(`aws credentials file`) or an IAM role that is attached to the Kafka Clients(Both producers and consumers). These IAM permissions are having similar names as the Kafka ACLs. All the activites like Create topic, delete topic, describe topic can be logged into the cloudtrail logs. We can't expect all the ACLs, but almost all the necessary permissions on the Topic level are already available. Soon we can expect that they can add more permissions. In this blog, we are going to see how to integrate the Debezium with AWS MSK IAM authentication and some problems I faced while implementing this. 
 
 ## How it works?
 
-{% include lazyload.html image_src="/assets/aws/Debezium With AWS MSK IAM Authentication.jpeg" image_alt="Debezium With AWS MSK IAM Authenticatio" image_title="Debezium With AWS MSK IAM Authenticatio" %}
+{% include lazyload.html image_src="/assets/aws/Debezium With AWS MSK IAM Authentication.jpg" image_alt="Debezium With AWS MSK IAM Authenticatio" image_title="Debezium With AWS MSK IAM Authenticatio" %}
 
 * The integration between Kafka ACL and the IAM will be established by the open-source [msk-iam-library](https://github.com/aws/aws-msk-iam-auth) which is developed by the AWS. 
 * This plugin will convert the IAM policies to Kafka ACLs internally(not exactly the same, but the underlying mechanism is to map with Kafka ACL).
@@ -203,7 +203,7 @@ debezium-mysql-db01.bb.tt1
 ```
 Yeah, it worked, lets see the activities on the CloudTrail console
 
-{% include lazyload.html image_src="/assets/aws/Debezium With AWS MSK IAM Authentication-console.jpeg" image_alt="Debezium With AWS MSK IAM Authenticatio" image_title="Debezium With AWS MSK IAM Authenticatio" %} 
+{% include lazyload.html image_src="/assets/aws/Debezium With AWS MSK IAM Authentication-console.jpg" image_alt="Debezium With AWS MSK IAM Authenticatio" image_title="Debezium With AWS MSK IAM Authenticatio" %} 
 
 ## Bonus Tip: Access AWS MSK Zookeeper with TLS
 
