@@ -257,21 +257,30 @@ Lets talk about some issues I faced.
 
 ## Caveats:
 
-1.Initially, I was using t3.small. So I used a very larger value for `reconnect.backoff.ms` But it didn't work for me, Then I increased the cluster to m5. After that, it was fixed. Then again I scale down to t3. This time I didn't get that `Too many connects` error. I don't why after scale down it didn't occur. 
+### #1 Cluster type:
 
-2.In the worker properties file, I didn't add the `producer.ssl*` and `consumer.ssl*`. It'll not work, so it has to return errors while deploying debzium or sink connectors. But status is showing running and the kafka connect logs returned some errors like disconnected.
+Initially, I was using t3.small. So I used a very larger value for `reconnect.backoff.ms` But it didn't work for me, Then I increased the cluster to m5. After that, it was fixed. Then again I scale down to t3. This time I didn't get that `Too many connects` error. I don't why after scale down it didn't occur. 
+
+### #2 No errors on the connector even its not producing any data
+
+In the worker properties file, I didn't add the `producer.ssl*` and `consumer.ssl*`. It'll not work, so it has to return errors while deploying debzium or sink connectors. But status is showing running and the kafka connect logs returned some errors like disconnected.
 
 ```bash
 Aug 26 14:54:16 ip-172-30-32-13 connect-distributed: [2021-08-26 14:54:16,708] WARN [debezium-s3-sink-db01|task-0] [Consumer clientId=connector-consumer-debezium-s3-sink-db01-0, groupId=connect-debezium-s3-sink-db01] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 
 Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] WARN [mysql-connector-02|task-0] [Producer clientId=connector-producer-mysql-connector-02-0] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 ```
-3.We added the `producer.ssl*` and `consumer.ssl*` to the worker properties file, but in the debezium connector JSON file, I tried without adding the `database.history.producer.*` and `database.history.consumer.*` properties. After the deployment, the connector was running but nothing gets produced. But the log was showing,
+
+### #3 Addon to #2 issue
+
+We added the `producer.ssl*` and `consumer.ssl*` to the worker properties file, but in the debezium connector JSON file, I tried without adding the `database.history.producer.*` and `database.history.consumer.*` properties. After the deployment, the connector was running but nothing gets produced. But the log was showing,
 
 ```bash
 Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] WARN [mysql-connector-02|task-0] [Producer clientId=connector-producer-mysql-connector-02-0] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 ```
-4.I granted the IAM topic level permissions to debezium-* prefix. But when I deployed the sink connector with the name `s3-sink-conn-01`, It threw an error like Access Denied on the group `connect-s3-sink-conn-01`. 
+### #4 Sink connector group
+
+I granted the IAM topic level permissions to debezium-* prefix. But when I deployed the sink connector with the name `s3-sink-conn-01`, It threw an error like Access Denied on the group `connect-s3-sink-conn-01`. 
 
 ```bash
 GroupAuthorizationException: Not authorized to access group: connect-s3-sink-conn-01
@@ -281,7 +290,10 @@ Because all the sink connectors will use a dedicated consumer group that is name
 ```json
 "arn:aws:kafka:REGION:ACCOUNT_ID:group/CLUSTER_NAME/CLUSTER_UUID/connect-debezium*"
 ```
-5.I tried to delete a topic using 2 methods. 1st one with --bootstap flag and the other one with --zookeeper.
+
+### #5 zookeeper with ACL
+
+I tried to delete a topic using 2 methods. 1st one with --bootstap flag and the other one with --zookeeper.
 
 ```bash
 kafka-topics \ 
@@ -297,9 +309,11 @@ kafka-topics \
 ```
 According to my IAM policy(mentioned above), `DeleteTopic` is not granted, so the 1st command returned the IAM permission denied error. But when I call the zookeeper to delete the topic, it actually deleted.  Because IAM auth will not enforce the zookeeper nodes. It can bypass. Anyhow zookeeper will be removed in future Kafka releases. 
 
-6.The only way to solve the above issue is, create a seperate Security group for zookeeper and allow only Kafka broker nodes IP address into that. And if you want to access zookeeper then you can add your IP into that security group in on-demand basis. So the kafka clients will not have access to the zookeeper. These steps are documented [here](https://docs.aws.amazon.com/msk/latest/developerguide/zookeeper-security.html)
+### #6 Zookeeper security
 
-7.Few more things that need attention:
+The only way to solve the above issue is, create a seperate Security group for zookeeper and allow only Kafka broker nodes IP address into that. And if you want to access zookeeper then you can add your IP into that security group in on-demand basis. So the kafka clients will not have access to the zookeeper. These steps are documented [here](https://docs.aws.amazon.com/msk/latest/developerguide/zookeeper-security.html)
+
+### #7 Few more things that need attention:
 
 * You cannot enable the IAM auth on the running cluster.
 * Once you enabled the IAM auth, then you cannot change the Auth method to SASA or Mutual TLS or Disable. 
