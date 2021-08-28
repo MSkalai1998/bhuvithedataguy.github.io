@@ -272,10 +272,12 @@ Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] W
 Aug 26 14:59:15 ip-172-30-32-13 connect-distributed: [2021-08-26 14:59:15,548] WARN [mysql-connector-02|task-0] [Producer clientId=connector-producer-mysql-connector-02-0] Bootstrap broker b-1.kafka.ap-south-1.amazonaws.com:9098 (id: -2 rack: null) disconnected
 ```
 4. I granted the IAM topic level permissions to debezium-* prefix. But when I deployed the sink connector with the name `s3-sink-conn-01`, It threw an error like Access Denied on the group `connect-s3-sink-conn-01`. 
+
 ```bash
 GroupAuthorizationException: Not authorized to access group: connect-s3-sink-conn-01
 ```
 Because all the sink connectors will use a dedicated consumer group that is named `connect-SINK_CONNECTOR_NAME`. But I granted the IAM permission with debezium only. So I had to use a different prefix for the Sink connectors in IAM permission. Then I started using the Sink connectors names with debezium-* prefix. And in the IAM I have granted the permission as like below.
+
 ```json
 "arn:aws:kafka:REGION:ACCOUNT_ID:group/CLUSTER_NAME/CLUSTER_UUID/connect-debezium*"
 ```
@@ -295,9 +297,10 @@ kafka-topics \
 ```
 According to my IAM policy(mentioned above), `DeleteTopic` is not granted, so the 1st command returned the IAM permission denied error. But when I call the zookeeper to delete the topic, it actually deleted.  Because IAM auth will not enforce the zookeeper nodes. It can bypass. Anyhow zookeeper will be removed in future Kafka releases. 
 
-7. The only way to solve the above issue is, create a seperate Security group for zookeeper and allow only Kafka broker nodes IP address into that. And if you want to access zookeeper then you can add your IP into that security group in on-demand basis. So the kafka clients will not have access to the zookeeper. These steps are documented [here](https://docs.aws.amazon.com/msk/latest/developerguide/zookeeper-security.html)
+6. The only way to solve the above issue is, create a seperate Security group for zookeeper and allow only Kafka broker nodes IP address into that. And if you want to access zookeeper then you can add your IP into that security group in on-demand basis. So the kafka clients will not have access to the zookeeper. These steps are documented [here](https://docs.aws.amazon.com/msk/latest/developerguide/zookeeper-security.html)
 
-6. Few more things that need attention:
+7. Few more things that need attention:
+
 * You cannot enable the IAM auth on the running cluster.
 * Once you enabled the IAM auth, then you cannot change the Auth method to SASA or Mutual TLS or Disable. 
 * IAM auth will not work in Zookeeper nodes, its only applicable for the brokers.
